@@ -14,6 +14,15 @@ Data generation done via web scrapping and direct import into a mongoDB database
 
 Along with the analysis, project also involved a written report and a Powerpoint presentation.
 
+## How to Use
+0) User clones this Github repo.
+1) User requires local installation of:
+- MongoDB (optionally with mongosh or mongoCompass)
+- Python (and related libraries)
+2) User runs `scrape_web.py` to scrape the relevant websites and clean its returned data.
+3) User runs `seed_data_insert` to populate local mongoDB database.
+4) User runs `app.py` to launch the Flask-generated webpage.
+
 ## Built with
 - Python
     - Flask
