@@ -3,6 +3,7 @@
 ## About Top Video Game Dashboard
 
 `Video Game Dashboard` is a team-created Flask-Pymongo-MongoDB web dashboard that provides a live snapshot about the top 5 Steam video game titles. This dashboard reports on the following five metrics and sources:
+
     - Revenue (Statista)
     - Viewership / Subscribership (Twitch)
     - Playerbase (SteamCharts)
