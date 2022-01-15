@@ -11,13 +11,26 @@ import json
 import pandas as pd
 import numpy as np
 from pprint import pprint
+import matplotlib.pyplot as plt
+#yfinance - open-source API pip 
+import yfinance as yf
 
 #------------------------------
-#- BROSWER SETUP
+#- BROSWER + PYMONGO SETUP
 #------------------------------
 # Sets a path to Google Chrome
 executable_path = {'executable_path': ChromeDriverManager().install()}
 browser = Browser('chrome', **executable_path, headless=False)
+
+# connecting to mongodb
+conn = 'mongodb://localhost:27017'
+client = pymongo.MongoClient(conn)
+
+# declare the database
+db = client.trending_games_db
+
+# drop potential duplicate database
+# pymongo.MongoClient.drop_database('trending_games_db')
 
 #------------------------------
 #- TWITCH SCRAPE
@@ -72,7 +85,7 @@ for i in views1:
     j = i.replace(' ','')
     views1cleaned.append(j)
 
-    # Upload to DataFrame and remove extra characters
+# Upload to DataFrame and remove extra characters
 df3 = pd.DataFrame(games1, columns = ['GAMES'])
 df3['VIEWS'] = views1cleaned
 df3 = df3.replace(r'\n+|\t+','', regex=True)
@@ -80,12 +93,7 @@ df3 = df3.replace(r'\n+|\t+','', regex=True)
 # Convert DataFrame into Dictionary
 twitch = pd.Series(df3.VIEWS.values,index=df3.GAMES).to_dict()
 
-# connecting to mongodb
-conn = 'mongodb://localhost:27017'
-client = pymongo.MongoClient(conn)
-
-# declare the database
-db = client.trending_games_db
+# create collection
 collection = db.twitch
 
 # Push into MongoDB
@@ -119,9 +127,6 @@ topgames_df.drop(['Rank', 'Last 30 Days'], axis=1, inplace=True)
 
 top5 = topgames_df.drop([0, 6, 7,8,9,10])
 
-conn = 'mongodb://localhost:27017'
-client = pymongo.MongoClient(conn)
-db = client['trending_games_db']
 collection = db['steam_charts']
 
 topgames_df.reset_index(inplace=True)
@@ -138,18 +143,18 @@ print("Steam charts scrape done!")
 #------------------------------
 
 #timeline information
-search_apex = pd.read_csv('Resources/multiTimeline(Apex).csv')
-search_csgo = pd.read_csv('Resources/multiTimeline(CSGO).csv')
-search_dota = pd.read_csv('Resources/multiTimeline(DOTA).csv')
-search_rust = pd.read_csv('Resources/multiTimeline(Rust).csv')
-search_gta = pd.read_csv('Resources/multiTimeline(GTAV).csv')
+search_apex = pd.read_csv('../Raw/GoogleTrends - Chris/Resources/multiTimeline(Apex).csv')
+search_csgo = pd.read_csv('../Raw/GoogleTrends - Chris/Resources/multiTimeline(CSGO).csv')
+search_dota = pd.read_csv('../Raw/GoogleTrends - Chris/Resources/multiTimeline(DOTA).csv')
+search_rust = pd.read_csv('../Raw/GoogleTrends - Chris/Resources/multiTimeline(Rust).csv')
+search_gta = pd.read_csv('../Raw/GoogleTrends - Chris/Resources/multiTimeline(GTAV).csv')
 
 #geomap information
-geo_apex = pd.read_csv('Resources/geoMap(Apex).csv')
-geo_csgo = pd.read_csv('Resources/geoMap(CSGO).csv')
-geo_dota = pd.read_csv('Resources/geoMap(DOTA).csv')
-geo_rust = pd.read_csv('Resources/geoMap(Rust).csv')
-geo_gta = pd.read_csv('Resources/geoMap(GTAV).csv')
+geo_apex = pd.read_csv('../Raw/GoogleTrends - Chris/Resources/geoMap(Apex).csv')
+geo_csgo = pd.read_csv('../Raw/GoogleTrends - Chris/Resources/geoMap(CSGO).csv')
+geo_dota = pd.read_csv('../Raw/GoogleTrends - Chris/Resources/geoMap(DOTA).csv')
+geo_rust = pd.read_csv('../Raw/GoogleTrends - Chris/Resources/geoMap(Rust).csv')
+geo_gta = pd.read_csv('../Raw/GoogleTrends - Chris/Resources/geoMap(GTAV).csv')
 
 #format, clean df multiline
 search_ls = [search_apex, search_csgo, search_dota, search_gta, search_rust]
@@ -181,13 +186,6 @@ merged_geo.sort_values('Region', inplace = True)
 merged_geo.reset_index(drop = True, inplace = True)
 geo_dict = merged_geo.to_dict('records')
 
-# connecting to mongodb
-conn = 'mongodb://localhost:27017'
-client = pymongo.MongoClient(conn)
-
-# declare the database
-db = client.trending_games_db
-
 # declare the collection
 g_line = db.gtrends_multiline
 g_geo = db.gtrends_geo
@@ -201,11 +199,38 @@ print("GTrends scrape done!")
 #------------------------------
 #- Y!FINANCE SCRAPE
 #------------------------------
+# Set start/end date
+start_date = '2016-01-01'
+end_date = '2022-01-15'
+
+# Define ticker list
+#NTDOY= Nintendo
+#SONY= SONY
+#MSFT= Microsoft
+#ATVI= Activision Blizzard
+#ZNGA= Zynga
+#EA= Electronic Arts
+tickers_list = ['NTDOY', 'SONY', 'MSFT', 'ATVI', 'EA']
+
+# Create placeholder for data
+data = pd.DataFrame(columns=tickers_list)
+
+# Fetch data
+for ticker in tickers_list:
+    data[ticker] = yf.download(ticker, 
+                               start_date,
+                               end_date)['Adj Close']
+
+gamingstockdata = data.to_dict('records')
+
+collection = db.y_finance
+
+# add to mongo
+collection.insert_many(gamingstockdata)
 
 print("YFinance scrape done!")
 
 #------------------------------
-#- DAPPRADAR SCRAPE
+#- QUIT BROWSER
 #------------------------------
-
 browser.quit()
