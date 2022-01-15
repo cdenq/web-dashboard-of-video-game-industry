@@ -138,41 +138,43 @@ print("Steam charts scrape done!")
 #------------------------------
 
 #timeline information
-search_apex = pd.read_csv('../Raw/GoogleTrends - Chris/Resources/multiTimeline(Apex).csv')
-search_csgo = pd.read_csv('../Raw/GoogleTrends - Chris/Resources/multiTimeline(CSGO).csv')
-search_dota = pd.read_csv('../Raw/GoogleTrends - Chris/Resources/multiTimeline(DOTA).csv')
-search_nw = pd.read_csv('../Raw/GoogleTrends - Chris/Resources/multiTimeline(NewWorld).csv')
-search_rust = pd.read_csv('../Raw/GoogleTrends - Chris/Resources/multiTimeline(Rust).csv')
+search_apex = pd.read_csv('Resources/multiTimeline(Apex).csv')
+search_csgo = pd.read_csv('Resources/multiTimeline(CSGO).csv')
+search_dota = pd.read_csv('Resources/multiTimeline(DOTA).csv')
+search_rust = pd.read_csv('Resources/multiTimeline(Rust).csv')
+search_gta = pd.read_csv('Resources/multiTimeline(GTAV).csv')
 
 #geomap information
-geo_apex = pd.read_csv('../Raw/GoogleTrends - Chris/Resources/geoMap(Apex).csv')
-geo_csgo = pd.read_csv('../Raw/GoogleTrends - Chris/Resources/geoMap(CSGO).csv')
-geo_dota = pd.read_csv('../Raw/GoogleTrends - Chris/Resources/geoMap(DOTA).csv')
-geo_nw = pd.read_csv('../Raw/GoogleTrends - Chris/Resources/geoMap(NewWorld).csv')
-geo_rust = pd.read_csv('../Raw/GoogleTrends - Chris/Resources/geoMap(Rust).csv')
+geo_apex = pd.read_csv('Resources/geoMap(Apex).csv')
+geo_csgo = pd.read_csv('Resources/geoMap(CSGO).csv')
+geo_dota = pd.read_csv('Resources/geoMap(DOTA).csv')
+geo_rust = pd.read_csv('Resources/geoMap(Rust).csv')
+geo_gta = pd.read_csv('Resources/geoMap(GTAV).csv')
 
-search_ls = [search_apex, search_csgo, search_dota, search_nw, search_rust]
+#format, clean df multiline
+search_ls = [search_apex, search_csgo, search_dota, search_gta, search_rust]
 merged_search = search_ls[0].merge(search_ls[1], on = 'Month', how = 'outer')
 for i in range(2, len(search_ls)):
     merged_search = merged_search.merge(search_ls[i], on = 'Month', how = 'outer')
 merged_search.rename(columns = {merged_search.columns[1] : 'Apex',
                                 merged_search.columns[2] : 'CSGO',
                                 merged_search.columns[3] : 'Dota 2',
-                                merged_search.columns[4] : 'New World',
+                                merged_search.columns[4] : 'GTA V',
                                 merged_search.columns[5] : 'Rust'
 }, inplace = True)
 merged_search.replace('<1', 1, inplace = True)
 merged_search = merged_search.astype({'Apex' : 'int64', 'Dota 2': 'int64'})
 search_dict = merged_search.to_dict('records')
 
-geo_ls = [geo_apex, geo_csgo, geo_dota, geo_nw, geo_rust]
+#format, clean df geo
+geo_ls = [geo_apex, geo_csgo, geo_dota, geo_gta, geo_rust]
 merged_geo = geo_ls[0].merge(geo_ls[1], on = 'Region', how = 'outer')
 for i in range(2, len(geo_ls)):
     merged_geo = merged_geo.merge(geo_ls[i], on = 'Region', how = 'outer')
 merged_geo.rename(columns = {merged_geo.columns[1] : 'Apex',
                              merged_geo.columns[2] : 'CSGO',
                              merged_geo.columns[3] : 'Dota 2',
-                             merged_geo.columns[4] : 'New World',
+                             merged_geo.columns[4] : 'GTA V',
                              merged_geo.columns[5] : 'Rust'
 }, inplace = True)
 merged_geo.sort_values('Region', inplace = True)
