@@ -7,7 +7,7 @@ conn = 'mongodb://localhost:27017'
 client = pym.MongoClient(conn)
 
 # setup mongo variables
-db = client.googletrends_db
+db = client.___
 
 # setup Flask app
 app = Flask(__name__)

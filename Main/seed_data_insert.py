@@ -1,2 +1,2 @@
 
-print('Data uploaded!')
+print('Uploaded to local MongoDB!')
