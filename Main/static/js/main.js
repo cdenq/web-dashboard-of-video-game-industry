@@ -46,5 +46,22 @@ function main() {
 //CONSTRUCTOR FUNCTION THAT SETS UP INTERACTIVITY
 //---------------------------------------------------------
 function constructor() {
+  // On change to the DOM
+  document.querySelector("#selDataset").addEventListener("change", event => {
+    
+    // Initialize an empty array for the country's data
+  let data = [];
 
+
+  if (event.target.value == 'us') {
+      data = us;
+  }
+  else if (event.target.value == 'uk') {
+      data = uk;
+  }
+  else if (event.target.value == 'canada') {
+      data = canada;
+  }
+
+  Plotly.restyle("pie", "values", [data]);
 };

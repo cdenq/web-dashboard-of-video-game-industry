@@ -1,13 +1,16 @@
 //---------------------------------------------------------
 //GOOGLE MULTILINE INIT
 //---------------------------------------------------------
-function firstGoogleLine(data) {
-    let googleLineTitle = `${Game} Search Relevancy Over Time`
+function graphGoogleLine(gline_data) {
+    let googleLineTitle = `${Game} Search Relevancy Over Time`;
+
+    let gMonths = gline_data.map(item => item.Month);
+    let gMonthsValues = gline_data.map(item => item.Apex)
 
     let trace1 = {
-        x: data.months,
-        y: data.,
-        text: data.months,
+        x: ,
+        y: gline_data.,
+        text: gline_data.months,
         type:'line'
     };
     let googleLineTraceData = [trace1]
@@ -43,5 +46,5 @@ function googleLine(data) {
 //---------------------------------------------------------
 //GOOGLE GEOMAP
 //---------------------------------------------------------
-function ggeo(data) {
+function graphGoogleGeo(data) {
 };
