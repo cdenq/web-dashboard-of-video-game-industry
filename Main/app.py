@@ -14,7 +14,7 @@ client = pym.MongoClient(conn)
 db = client.trending_games_db
 
 # setup Flask app
-app = Flask(__name__)
+app = Flask(__name__, template_folder='static/html')
 
 #------------------------
 # DATA IMPORT
@@ -38,7 +38,7 @@ yahoo_data = list(db['y_finance'].find())
 # home route
 @app.route('/')
 def home():
-    return render_template('static/html/index.html', \
+    return render_template('index.html', \
         steamData = steam_data, \
         twitchData = twitch_data, \
         googleLineData = gline_data, \
@@ -48,7 +48,7 @@ def home():
 # dashboard route
 @app.route('/dashboard')
 def dashboard():
-    return render_template('static/html/dashboard.html', \
+    return render_template('dashboard.html', \
         steamData = steam_data, \
         twitchData = twitch_data, \
         googleLineData = gline_data, \

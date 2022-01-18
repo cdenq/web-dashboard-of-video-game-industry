@@ -1,11 +1,11 @@
 //---------------------------------------------------------
-//STEAM MULTILINE INIT
+//INITIAL GOOGLE GEOMAP
 //---------------------------------------------------------
-function graphSteam() {
+function graphGoogleGeo(data) {
 };
 
 //---------------------------------------------------------
-//STEAM MULTILINE RESTYLE
+//RESTYLE GOOGLE GEOMAP
 //---------------------------------------------------------
-function restyleSteam() {
+function restyleGoogleGeo(data) {
 };

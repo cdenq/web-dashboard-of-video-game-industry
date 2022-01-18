@@ -1,11 +1,11 @@
 //---------------------------------------------------------
-//STEAM MULTILINE INIT
+//YAHOO MULTILINE INIT
 //---------------------------------------------------------
-function graphSteam() {
+function graphYahoo() {
 };
 
 //---------------------------------------------------------
-//STEAM MULTILINE RESTYLE
+//YAHOO MULTILINE RESTYLE
 //---------------------------------------------------------
-function restyleSteam() {
+function restyleYahoo() {
 };

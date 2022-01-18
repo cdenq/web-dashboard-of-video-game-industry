@@ -8,9 +8,9 @@ function graphGoogleLine(gline_data) {
     let gMonthsValues = gline_data.map(item => item.Apex)
 
     let trace1 = {
-        x: ,
-        y: gline_data.,
-        text: gline_data.months,
+        x: gMonths,
+        y: gMonthsValues,
+        text: gMonths,
         type:'line'
     };
     let googleLineTraceData = [trace1]
@@ -19,7 +19,7 @@ function graphGoogleLine(gline_data) {
         title: googleLineTitle
     };
 
-    Plotly.restyle('googleDiv', 'value')
+    Plotly.newPlot('google', googleLineTraceData, googleLineLayout);
 };
 
 //---------------------------------------------------------
