@@ -19,6 +19,10 @@ MongoClient.connect(url, function(err, db) {
 
     // print out all mongo collections
     db.list_collection_names();
+
+    Stream()
+    googleLine()
+    
   });
 
 //---------------------------------------------------------
