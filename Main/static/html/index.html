@@ -39,6 +39,7 @@
               <h2 class="text-center"style="color: 4DFFC3"><b>SteamCharts</b></h2>
               <h4 class="media-heading" style="color: white"><b>{{mars.news_title}}</b></h4>
               <h5 style="color: white"><p>{{mars.news_paragraph}}</p></h5>
+              <div class="steam"></div>
             </div>
           </div>
         </div>
@@ -55,20 +56,21 @@
               <h2 class="text-center" style="color: BF00E6"><b>Twitch</b></h2>
               <h4 class="media-heading" style="color: white"><b>{{mars.news_title}}</b></h4>
               <h5 style="color: white"><p>{{mars.news_paragraph}}</p></h5>
+              <div class="twitch"></div>
             </div>
           </div>
         </div>
       </div>
-          <!-- Add BlockChain Games -->
+          <!-- Add BlockChain Games
           <div class="row">
             <h3 class="text-center" style="color: 3399FF">BlockChain Games</h3>
             <div class="col-md-12" style="color: white">
               {{mars.mars_facts | safe}}
             </div>
           </div>
-        </div>
+        </div> -->
 
-            <!-- Retail Data? -->
+            <!-- Google Geomap -->
         <div class="col-md-3">
           <div class="row">
             <div class="col-md-12">
@@ -76,6 +78,7 @@
                 <div class="panel-body">
                   <h3 style="color: 004466"><b>Retail Revenue</b></h3>
                   <p style="color: #000000">{{mars.mars_weather}}</p>
+                  <div class="ggeo"></div>
                 </div>
               </div>
             </div>
@@ -91,6 +94,7 @@
               <img src="{{hemisphere.img_url}}" alt="Google Trends" style="width:250px;height:250px;">
               <div class="caption">
                 <h3><b>{{hemisphere.title}}</b></h3>
+                <div class="gline"></div>
               </div>
             </div>
           </div>
@@ -104,6 +108,7 @@
           <div class="thumbnail">
             <img src="stock_display.png" alt="Gaming Stock Data" style="width:250px;height:250px;">
             <div class="caption">
+              <div class="yahoo"></div>
               <h3><b>{{Top 5 Gaming Stocks}}</b></h3>
               <table class="purpleHorizon">
                 <thead>
