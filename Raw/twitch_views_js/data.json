@@ -1,0 +1,72 @@
+[
+  {
+    "_id": {
+      "$oid": "61e30c55232c5a2c6ae17c3c"
+    },
+    "Just Chatting": "374,034",
+    "League of Legends": "269,528",
+    "Rust": "223,036",
+    "Grand Theft Auto V": "198,498",
+    "Escape from Tarkov": "122,840",
+    "VALORANT": "116,776",
+    "Apex Legends": "96,378",
+    "Fortnite": "89,392",
+    "Dota 2": "71,811"
+  },
+  {
+    "_id": {
+      "$oid": "61e30f014bf572b163e64e69"
+    },
+    "Just Chatting": "374,034",
+    "League of Legends": "269,528",
+    "Rust": "223,036",
+    "Grand Theft Auto V": "198,498",
+    "Escape from Tarkov": "122,840",
+    "VALORANT": "116,776",
+    "Apex Legends": "96,378",
+    "Fortnite": "89,392",
+    "Dota 2": "71,811"
+  },
+  {
+    "_id": {
+      "$oid": "61e311e48eed1cd90e26b4ad"
+    },
+    "Just Chatting": "374,034",
+    "League of Legends": "269,528",
+    "Rust": "223,036",
+    "Grand Theft Auto V": "198,498",
+    "Escape from Tarkov": "122,840",
+    "VALORANT": "116,776",
+    "Apex Legends": "96,378",
+    "Fortnite": "89,392",
+    "Dota 2": "71,811"
+  },
+  {
+    "_id": {
+      "$oid": "61e3157f3c560f7e12c5155f"
+    },
+    "Just Chatting": "374,034",
+    "League of Legends": "269,528",
+    "Rust": "223,036",
+    "Grand Theft Auto V": "198,498",
+    "Escape from Tarkov": "122,840",
+    "VALORANT": "116,776",
+    "Apex Legends": "96,378",
+    "Fortnite": "89,392",
+    "Dota 2": "71,811"
+  },
+  {
+    "_id": {
+      "$oid": "61e316493c560f7e12c51678"
+    },
+    "Just Chatting": "374,034",
+    "League of Legends": "269,528",
+    "Rust": "223,036",
+    "Grand Theft Auto V": "198,498",
+    "Escape from Tarkov": "122,840",
+    "VALORANT": "116,776",
+    "Apex Legends": "96,378",
+    "Fortnite": "89,392",
+    "Dota 2": "71,811"
+  }
+]
