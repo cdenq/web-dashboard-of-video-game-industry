@@ -5,152 +5,183 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
   <title>Trending Games</title>
-  <script src="https://d3js.org/d3.v5.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-    <!-- All Black Background -->
-    <style>
-    body {background-color: black;}
-    </style>
-  </head>
   
-   <!-- Create Container -->
-  <body>
-    <div class="container">
-        <!-- Add Jumbotron w/ Image URL -->
-        <div class="jumbotron text-center" style="background-image: url(https://i.pinimg.com/originals/a2/94/b5/a294b593769b6bf61b55c152032e7459.jpg); background-size: 100%; height: 350px;"><h1 class="display-4" style="color: white">Trending Games Dashboard</h1></div>
-        <div class="row">
-          <div class="col-md-2">
-            <div class="navbar">
-              <h5 style= "color: lightskyblue"><b>Latest Game Data:</b></h5>
-              <select id="selDataset" onchange="optionChanged(this.value)">
-                <option value ="Counter-Strike:Global Offensive">Counter-Strike:Global Offensive</option>
-                <option value ="Dota 2">Dota 2</option>
-                <option value ="Rust">Rust</option>
-                <option value ="Apex Legends">Apex Legends</option>
-                <option value ="Grand Theft Auto V">Grand Theft Auto V</option>
+  <!-- SCRIPTS -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin="" />
+  <!-- Leaflet JavaScript code -->
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+  integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+  crossorigin=""></script>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+  
+  <!-- All Black Background -->
+  <style> body {background-color: black;} </style>
+</head>
+  
+<!-- Create Container -->
+<body>
+  <div class="container">
+    <!-- Add Jumbotron w/ Image URL -->
+    <div class="jumbotron text-center" style="background-image: url(https://i.pinimg.com/originals/a2/94/b5/a294b593769b6bf61b55c152032e7459.jpg); background-size: 100%; height: 350px;">
+      <h1 class="display-4" style="color: white">Trending Games Dashboard</h1>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <div class="navbar">
+          <h5 style= "color: lightskyblue"><b>Latest Game Data:</b></h5>
+          <select id="selDataset" onchange="optionChanged(this.value)">
+            <option value ="Counter-Strike:Global Offensive">Counter-Strike:Global Offensive</option>
+            <option value ="Dota 2">Dota 2</option>
+            <option value ="Rust">Rust</option>
+            <option value ="Apex Legends">Apex Legends</option>
+            <option value ="Grand Theft Auto V">Grand Theft Auto V</option>
             <div class="panel panel-primary">
-              <div class="panel-heading">
-                <h3 class="panel-title">Game Info</h3></div>
-                <div id="sample-metadata" class="panel-body"></div>
-              </div>
+              <div class="panel-heading"><h3 class="panel-title">Game Info</h3></div>
+              <div id="sample-metadata" class="panel-body"></div>
             </div>
-            <div class="col-md-5">
-              <div id="bar"></div>
-            </div>
-            <div class="col-md-5">
-              <div id="gauge"></div>
-            </div>
-          </div>
+          </select>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div id="bubble"></div>
-          </div>
+        <div class="col-md-5">
+          <div id="bar"></div>
+        </div>
+        <div class="col-md-5">
+          <div id="gauge"></div>
         </div>
       </div>
-    </div> 
-    <!-- Add Steam Charts -->
-      <div class="row">
-        <div class="col-md-12">
-          <div class="media">
-            <div class="media-body">
-              <h2 class="text-center"style="color: teal"><b>SteamCharts</b></h2>
-              <h4 class="media-heading" style="color: white"><b>{{mars.news_title}}</b></h4>
-              <h5 style="color: white"><p>{{mars.news_paragraph}}</p></h5>
-            </div>
-          </div>
-        </div>
-      </div>
+    </div>
 
-        <!-- Twitch -->
-         <div class="row">
-        <div class="col-md-12">
-          <div class="media">
-            <div class="media-body">
-              <h2 class="text-center" style="color: purple"><b>Twitch</b></h2>
-              <h4 class="media-heading" style="color: white"><b>{{mars.news_title}}</b></h4>
-              <h5 style="color: white"><p>{{mars.news_paragraph}}</p></h5>
-            </div>
-          </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="bubble"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Add Steam Charts -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="media">
+        <div class="media-body">
+          <h2 class="text-center"style="color: teal"><b>SteamCharts</b></h2>
+          <h4 class="media-heading" style="color: white"><b>{{mars.news_title}}</b></h4>
+          <h5 style="color: white"><p>{{mars.news_paragraph}}</p></h5>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Twitch -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="media">
+        <div class="media-body">
+          <h2 class="text-center" style="color: purple"><b>Twitch</b></h2>
+          <h4 class="media-heading" style="color: white"><b>{{mars.news_title}}</b></h4>
+          <h5 style="color: white"><p>{{mars.news_paragraph}}</p></h5>
+        </div>
+      </div>
+    </div>
+  </div>
     
-<!-- Google Trends -->
-      <div class="row" style="margin-top: 80px;">
-        <div class="page-header">
-          <h2 class="text-center" style="color: gold"><b>Google Trends</b></h2>
-          <div class="col-md-6">
-            <div class="thumbnail">
-              <img src="{{hemisphere.img_url}}" alt="Google Trends" style="width:150px;height:150px;">
-              <div class="caption">
-                <h3 class="text-center"></h3>
-              </div>
-            </div>
+  <!-- Google Trends -->
+  <div class="row" style="margin-top: 80px;">
+    <div class="page-header">
+      <h2 class="text-center" style="color: gold"><b>Google Trends</b></h2>
+      <div class="col-md-6">
+        <div class="thumbnail">
+          <img src="{{hemisphere.img_url}}" alt="Google Trends" style="width:150px;height:150px;">
+          <div id="gline"></div>
+          <div class="caption">
+            <h3 class="text-center"></h3>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
-
-<!-- Gaming Stock Data -->
-    <div class="row" style="margin-top: 80px;">
-      <div class="page-header">
-        <h2 class="text-center" style="color: rgb(240, 144, 217)"><b>Gaming Stock Data</b></h2>
-        <div class="col-md-6">
-          <div class="thumbnail">
-            <img src="Main/stock_display.png" alt="Gaming Stock Data" style="width:150px;height:150px;">
-            <div class="caption"></div>
-              <h3><b>{{Top 5 Gaming Stocks}}</b></h3>
-              <table class="purpleHorizon">
-                <thead>
-                <tr>
-                <th>ATVI</th>
-                <th>MSFT</th>
-                <th>EA</th>
-                <th>SONY</th>
-                <th>NTDOY</th>
-                </tr>
-                </thead>
-                <tfoot>
-                <tr>
-                <td colspan="5">
-                <div class="links"><a href="#">&laquo;</a>
-                <a class="active" href="#">1</a> <a href="#">2</a>
-                <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a></div>
-                </td>
-                </tr>
-                </tfoot>
-                <tbody>
-                <tr>
-                <td>cell1_1</td>
-                <td>cell2_1</td>
-                <td>cell3_1</td>
-                <td>cell4_1</td>
-                <td>cell5_1</td>
-                </tr>
-                <tr>
-                <td>cell1_2</td>
-                <td>cell2_2</td>
-                <td>cell3_2</td>
-                <td>cell4_2</td>
-                <td>cell5_2</td>
-                </tr>
-                </tbody>
-                </table>
-            </div>
+  <!-- Google Geo -->
+  <div class="row" style="margin-top: 80px;">
+    <div class="page-header">
+      <h2 class="text-center" style="color: gold"><b>Google GeoMaps</b></h2>
+      <div class="col-md-6">
+        <div class="thumbnail">
+          <img src="{{hemisphere.img_url}}" alt="Google Trends" style="width:150px;height:150px;">
+          <div id="ggeo"></div>
+          <div class="caption">
+            <h3 class="text-center"></h3>
+          </div>
         </div>
       </div>
-      </div>
-      </div>
+    </div>
+  </div>
 
-    <!-- Section: Footer -->
+  <!-- Gaming Stock Data -->
+  <div class="row" style="margin-top: 80px;">
+    <div class="page-header">
+      <h2 class="text-center" style="color: rgb(240, 144, 217)"><b>Gaming Stock Data</b></h2>
+      <div class="col-md-6">
+        <div class="thumbnail">
+          <img src="Main/stock_display.png" alt="Gaming Stock Data" style="width:150px;height:150px;">
+          <div class="caption"></div>
+            <h3><b>{{Top 5 Gaming Stocks}}</b></h3>
+            <table class="purpleHorizon">
+              <thead>
+              <tr>
+              <th>ATVI</th>
+              <th>MSFT</th>
+              <th>EA</th>
+              <th>SONY</th>
+              <th>NTDOY</th>
+              </tr>
+              </thead>
+              <tfoot>
+              <tr>
+              <td colspan="5">
+              <div class="links"><a href="#">&laquo;</a>
+              <a class="active" href="#">1</a> <a href="#">2</a>
+              <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a></div>
+              </td>
+              </tr>
+              </tfoot>
+              <tbody>
+              <tr>
+              <td>cell1_1</td>
+              <td>cell2_1</td>
+              <td>cell3_1</td>
+              <td>cell4_1</td>
+              <td>cell5_1</td>
+              </tr>
+              <tr>
+              <td>cell1_2</td>
+              <td>cell2_2</td>
+              <td>cell3_2</td>
+              <td>cell4_2</td>
+              <td>cell5_2</td>
+              </tr>
+              </tbody>
+              </table>
+          </div>
+      </div>
+    </div>
+    </div>
+    </div>
+
+  <!-- Section: Footer -->
   <footer>
-<div style="color: white">Copyright &copy; Team React 2022</div>
-    </footer>
-    
- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="./static/js/app.js"></script>
-    
+    <div style="color: white">Copyright &copy; Team React 2022</div>
+  </footer>
+  
+  <!-- Scripts -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script type="text/javascript" src="../js/main.js"></script>
   </body>
 </html>
 

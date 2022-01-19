@@ -157,6 +157,10 @@ geo_dota = pd.read_csv('../Raw/GoogleTrends - Chris/Resources/geoMap(DOTA).csv')
 geo_rust = pd.read_csv('../Raw/GoogleTrends - Chris/Resources/geoMap(Rust).csv')
 geo_gta = pd.read_csv('../Raw/GoogleTrends - Chris/Resources/geoMap(GTAV).csv')
 
+#state information
+geo_state = pd.read_csv('../Raw/GoogleTrends - Chris/Resources/statelatlong.csv')
+geo_state.rename(columns = {'City' : 'Region'}, inplace = True)
+
 #format, clean df multiline
 search_ls = [search_apex, search_csgo, search_dota, search_gta, search_rust]
 merged_search = search_ls[0].merge(search_ls[1], on = 'Month', how = 'outer')
@@ -173,7 +177,7 @@ merged_search = merged_search.astype({'Apex' : 'int64', 'Dota 2': 'int64'})
 search_dict = merged_search.to_dict('records')
 
 #format, clean df geo
-geo_ls = [geo_apex, geo_csgo, geo_dota, geo_gta, geo_rust]
+geo_ls = [geo_apex, geo_csgo, geo_dota, geo_gta, geo_rust, geo_state]
 merged_geo = geo_ls[0].merge(geo_ls[1], on = 'Region', how = 'outer')
 for i in range(2, len(geo_ls)):
     merged_geo = merged_geo.merge(geo_ls[i], on = 'Region', how = 'outer')
