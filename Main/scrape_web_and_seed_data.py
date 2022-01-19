@@ -12,6 +12,7 @@ import pandas as pd
 import numpy as np
 from pprint import pprint
 import matplotlib.pyplot as plt
+from time import sleep
 #yfinance - open-source API pip 
 import yfinance as yf
 
@@ -35,66 +36,66 @@ db = client.trending_games_db
 #------------------------------
 #- TWITCH SCRAPE
 #------------------------------
-# URL of the page to be scraped
-url = 'https://twitchtracker.com/statistics/games'
-# Visit the URL
-browser.visit(url)
-# Parse the link using BeautifulSoup
-html = browser.html
-soup = bs(html, 'html.parser')
+URL = ['https://twitchtracker.com/games', 'https://twitchtracker.com/games?page=2', 'https://twitchtracker.com/games?page=3', 'https://twitchtracker.com/games?page=4', 'https://twitchtracker.com/games?page=5']
+tags = []
+games = []
+cleanedviews = []
+views = []
 
-# Find the games and their respective views from page 1 of the table
-games1 = []
-views1 = []
-
-table1 = soup.find('table', id='share-table')
-
-for i in table1.find_all('a'):
-    output = i.text
-    games1.append(output)
-
-for i in table1.find_all('td', class_="sorting_1"):
-    output = i.text
-    views1.append(output)
-
-    # # Navigate to page two
-# page_two = browser.links.find_by_partial_text('2')[1].click()
-
-# Find the games and their respective views from page 1 of the table
-
-# games2 = []
-# views2 = []
-
-#table2 = soup.find('table', id='share-table')
-
-# for i in table2.find_all('a'):
-#     output = i.text
-#     games2.append(output)
+for url in range(0,5):      
+    browser.visit(URL[url])
+    html = browser.html
+    soup = bs(html, 'html.parser')
     
-# for i in table1.find_all('td', class_="sorting_1"):
-#     output = i.text
-#     views2.append(output)
+    href_tags = soup.find_all(href=True)
+    raw_games = href_tags[40:60]
+    
+    for x in raw_games:
+        tags.append(str(x))
+    
+    for element in tags:
+        if element not in games:
+            front = element.split(">")[1]
+            back = front.split("<")[0]
+            games.append(back)
+        
+    viewhtml = soup.find_all('div', class_="ri-value")
+    
+    for x in viewhtml:
+        cleanedviews.append(str(x))
+    
 
-# Remove "All Other Games Combined" from views1
-del views1[0]
+    for element in cleanedviews:
+        if element not in views:
+            front = element.split(">")[2]
+            back = front.split("<")[0]
+            views.append(back)
+    
+    sleep(5)
 
-# Remove leading and trailing spaces
-views1cleaned = []
+# Upload to DataFrame 
+df = pd.DataFrame(games, columns = ['GAME'])
+df['VIEWS'] = views
 
-for i in views1:
-    j = i.replace(' ','')
-    views1cleaned.append(j)
+# Change VIEWS column to integers
+df.VIEWS = (df.VIEWS.replace(r'[KM]+$', '', regex=True).astype(float) * df.VIEWS.str.extract(r'[\d\.]+([KM]+)', expand=False)
+             .fillna(1)
+             .replace(['K','M'], [10**3, 10**6]).astype(int))
 
-# Upload to DataFrame and remove extra characters
-df3 = pd.DataFrame(games1, columns = ['GAMES'])
-df3['VIEWS'] = views1cleaned
-df3 = df3.replace(r'\n+|\t+','', regex=True)
+avg_views = df['VIEWS'].mean()
+median_views = df['VIEWS'].median()
+
+df.drop(df.tail(1).index,inplace=True)
 
 # Convert DataFrame into Dictionary
-twitch = pd.Series(df3.VIEWS.values,index=df3.GAMES).to_dict()
+twitch = pd.Series(df.VIEWS.values,index=df.GAME).to_dict()
 
-# create collection
-collection = db.twitch
+# connecting to mongodb
+conn = 'mongodb://localhost:27017'
+client = pymongo.MongoClient(conn)
+
+# declare the database
+collection = db.items
 
 # Push into MongoDB
 collection.insert_one(twitch)

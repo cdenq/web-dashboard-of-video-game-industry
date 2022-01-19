@@ -2,10 +2,10 @@
 //GOOGLE MULTILINE INIT
 //---------------------------------------------------------
 function graphGoogleLine(gline_data) {
-    let googleLineTitle = `${Game} Search Relevancy Over Time`;
+    let googleLineTitle = `Apex Search Relevancy Over Time`;
 
     let gMonths = gline_data.map(item => item.Month);
-    let gMonthsValues = gline_data.map(item => item.Apex)
+    let gMonthsValues = gline_data.map(item => item.Apex);
 
     let trace1 = {
         x: gMonths,
@@ -13,7 +13,7 @@ function graphGoogleLine(gline_data) {
         text: gMonths,
         type:'line'
     };
-    let googleLineTraceData = [trace1]
+    let googleLineTraceData = [trace1];
 
     let googleLineLayout = {
         title: googleLineTitle
@@ -25,26 +25,19 @@ function graphGoogleLine(gline_data) {
 //---------------------------------------------------------
 //GOOGLE MULTILINE RESTYLE
 //---------------------------------------------------------
-function googleLine(data) {
-    let googleLineTitle = `${Game} Search Relevancy Over Time`
+function restyleGoogleLine(valueChange) {
+  // Initialize an empty array for the country's data
+  let data = [];
 
-    data.
+  if (event.target.value == '') {
+      data = us;
+  }
+  else if (event.target.value == 'uk') {
+      data = uk;
+  }
+  else if (event.target.value == 'canada') {
+      data = canada;
+  }
 
-    let trace1 = {
-
-    };
-    let googleLineTraceData = [trace1]
-
-    let googleLineLayout = {
-        title: googleLineTitle
-    };
-
-    Plotly.restyle('googleDiv', 'value', [data])
-};
-
-
-//---------------------------------------------------------
-//GOOGLE GEOMAP
-//---------------------------------------------------------
-function graphGoogleGeo(data) {
+  Plotly.restyle("pie", "values", [data]);
 };
