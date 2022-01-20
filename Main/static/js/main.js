@@ -7,11 +7,13 @@ function main() {
   document.querySelector("#selDataset").value = 'Apex';
 
   // Set the default charts
+  console.log("hi");
   graphGoogleLine(googleLineData);
   graphGoogleGeo(googleGeoData);
   graphSteam(steamData);
-  graphTwitch(twitchData);
+  twitchbar();
   graphYahoo(yahooData);
+  test();
 
   // gives dropdown menu interactivity
   document.querySelector("#selDataset").addEventListener("change", event => {
@@ -21,6 +23,10 @@ function main() {
     restyleTwitch(event.target.value);
     restyleYahoo(event.target.value);
   });
+};
+
+function test() {
+  console.log("function was gcalled")
 };
 
 //---------------------------------------------------------

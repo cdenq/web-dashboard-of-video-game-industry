@@ -15,7 +15,7 @@ var HPdata = [{
     width: 500
   };
   
-  Plotly.newPlot('myDiv', HPdata, layout);
+  Plotly.newPlot('steam1', HPdata, layout);
 
   var PPdata = [{
     values: [906996,760295,696704,251595,163339],
@@ -29,7 +29,7 @@ var HPdata = [{
     width: 500
   };
   
-  Plotly.newPlot('myDiv', PPdata, layout);
+  Plotly.newPlot('steam2', PPdata, layout);
 
   var CPdata = [{
     values: [809631,661120,565534,240196,123172],
@@ -43,7 +43,7 @@ var HPdata = [{
     width: 500
   };
   
-  Plotly.newPlot('myDiv', CPdata, layout);
+  Plotly.newPlot('steam3', CPdata, layout);
 
 //---------------------------------------------------------
 //STEAM MULTILINE RESTYLE

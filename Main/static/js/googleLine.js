@@ -19,7 +19,7 @@ function graphGoogleLine(gline_data) {
         title: googleLineTitle
     };
 
-    Plotly.newPlot('google', googleLineTraceData, googleLineLayout);
+    Plotly.newPlot('gline', googleLineTraceData, googleLineLayout);
 };
 
 //---------------------------------------------------------

@@ -27,7 +27,7 @@ var Viewdata = [
         drawTime; "afterDraw" // (default)
     }
   
-  Plotly.newPlot('twitchDiv', Viewdata, layout);
+  Plotly.newPlot('twitch', Viewdata, layout);
 
 };
 
