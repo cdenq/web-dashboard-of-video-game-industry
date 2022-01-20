@@ -22,6 +22,10 @@ function graphGoogleLine(gline_data) {
     Plotly.newPlot('gline', googleLineTraceData, googleLineLayout);
 };
 
+function testerFunction(data) {
+    console.log(data);
+};
+
 //---------------------------------------------------------
 //GOOGLE MULTILINE RESTYLE
 //---------------------------------------------------------

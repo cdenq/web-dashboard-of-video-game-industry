@@ -4,29 +4,29 @@
 function main() {
   // Set the default game title in dropdown
   //APEX
-  document.querySelector("#selDataset").value = 'Apex';
+  document.querySelector("#selDataset").value = 'Apex Legends';
 
   // Set the default charts
-  console.log("hi");
+  testerFunction(testMe);
   graphGoogleLine(googleLineData);
   graphGoogleGeo(googleGeoData);
   graphSteam(steamData);
   twitchbar();
   graphYahoo(yahooData);
-  test();
+  madeIt();
 
   // gives dropdown menu interactivity
   document.querySelector("#selDataset").addEventListener("change", event => {
-    restyleGoogleLine(event.target.value);
-    restyleGoogleGeo(event.target.value);
-    restyleSteam(event.target.value);
-    restyleTwitch(event.target.value);
-    restyleYahoo(event.target.value);
+    // restyleGoogleLine(event.target.value);
+    // restyleGoogleGeo(event.target.value);
+    // restyleSteam(event.target.value);
+    // restyleTwitch(event.target.value);
+    // restyleYahoo(event.target.value);
   });
 };
 
-function test() {
-  console.log("function was gcalled")
+function madeIt() {
+  console.log("function was reached past all the graphs")
 };
 
 //---------------------------------------------------------

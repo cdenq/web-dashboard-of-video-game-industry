@@ -23,8 +23,7 @@ var Viewdata = [
             value: '95600',
             borderColor: 'tomato',
             borderWidth: 1
-        }],
-        drawTime; "afterDraw" // (default)
+        }]
     }
   
   Plotly.newPlot('twitch', Viewdata, layout);
