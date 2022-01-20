@@ -2,36 +2,48 @@
 <html lang="en">
 
 <head>
+  <!-- Meta -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
+  <!-- Title -->
   <title>Trending Games</title>
   
   <!-- SCRIPTS -->
-  <script src="https://d3js.org/d3.v5.min.js"></script>
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-  crossorigin="" />
-  <!-- Leaflet JavaScript code -->
-  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-  integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-  crossorigin=""></script>
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin="" />
+    <!-- Leaflet JavaScript code -->
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <!-- Plotly Plugin -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- all JS scripts -->
+      <script src="googleGeo.js"></script>
+      <script src="googleLine.js"></script>
+      <script src="main.js"></script>
+      <script src="steam.js"></script>
+      <script src="twitch.js"></script>
+      <script src="yahoo.js"></script>
   
   <!-- All Black Background -->
   <style> body {background-color: black;} </style>
 </head>
-  
-<!-- Create Container -->
+
 <body>
+  <!-- Create Container -->
   <div class="container">
     <!-- Add Jumbotron w/ Image URL -->
     <div class="jumbotron text-center" style="background-image: url(https://i.pinimg.com/originals/a2/94/b5/a294b593769b6bf61b55c152032e7459.jpg); background-size: 100%; height: 350px;">
       <h1 class="display-4" style="color: white">Trending Games Dashboard</h1>
     </div>
+    <!-- Dropdown -->
     <div class="row">
       <div class="col-md-2">
         <div class="navbar">
@@ -63,19 +75,30 @@
       </div>
     </div>
 
+<<<<<<< Updated upstream
   </div>
 
   <!-- Charlotte edited text/added centering -->
+=======
+>>>>>>> Stashed changes
   <!-- Add Steam Charts -->
   <div class="row">
     <div class="col-md-12">
       <div class="media">
         <div class="media-body">
+<<<<<<< Updated upstream
           <center><h2 class="text-center"style="color: teal"><b>SteamCharts</b></h2>
           <h4 class="media-heading" style="color: white"><b>Steam Charts</b></h4>
           <h5 style="color: white"><p>{{mars.news_paragraph}}</p></h5></center>
           <!--Need to fix img tag-->
           <img src="">
+=======
+          <h2 class="text-center"style="color: teal"><b>SteamCharts</b></h2>
+          <h4 class="media-heading" style="color: white"><b>title</b></h4>
+          <h5 style="color: white"><p>para</p></h5>
+          <!-- Plotly graph here -->
+          <div id="steam"></div>
+>>>>>>> Stashed changes
         </div>
       </div>
     </div>
@@ -88,8 +111,15 @@
       <div class="media">
         <div class="media-body">
           <h2 class="text-center" style="color: purple"><b>Twitch</b></h2>
+<<<<<<< Updated upstream
           <center><h4 class="media-heading" style="color: white"><b>Top Twitch Streamers/Games</b></h4>
           <h5 style="color: white"><p>{{mars.news_paragraph}}</p></h5></center>
+=======
+          <h4 class="media-heading" style="color: white"><b>tile</b></h4>
+          <h5 style="color: white"><p>para</p></h5>
+          <!-- Plotly graph here -->
+          <div id="twitch"></div>
+>>>>>>> Stashed changes
         </div>
       </div>
     </div>
@@ -100,6 +130,7 @@
     <div class="page-header">
       <h2 class="text-center" style="color: gold"><b>Google Trends</b></h2>
       <div class="col-md-6">
+<<<<<<< Updated upstream
         <div class="thumbnail">
           <img src="{{hemisphere.img_url}}" alt="Google Trends" style="width:150px;height:150px;">
           <div id="gline"></div>
@@ -107,6 +138,10 @@
             <h3 class="text-center"></h3>
           </div>
         </div>
+=======
+        <!-- Plotly graph here -->
+        <div id="gline"></div>
+>>>>>>> Stashed changes
       </div>
     </div>
   </div>
@@ -116,6 +151,7 @@
     <div class="page-header">
       <h2 class="text-center" style="color: gold"><b>Google GeoMaps</b></h2>
       <div class="col-md-6">
+<<<<<<< Updated upstream
         <div class="thumbnail">
           <img src="{{hemisphere.img_url}}" alt="Google Trends" style="width:150px;height:150px;">
           <div id="ggeo"></div>
@@ -123,6 +159,10 @@
             <h3 class="text-center"></h3>
           </div>
         </div>
+=======
+        <!-- Plotly graph here -->
+        <div id="ggeo"></div>
+>>>>>>> Stashed changes
       </div>
     </div>
   </div>
@@ -134,7 +174,8 @@
       <h2 class="text-center" style="color: rgb(240, 144, 217)"><b>Gaming Stock Data</b></h2>
       <div class="col-md-6">
         <div class="thumbnail">
-          <img src="Main/stock_display.png" alt="Gaming Stock Data" style="width:150px;height:150px;">
+          <!-- Plotly graph here -->
+          <div id="yahoo"></div>
           <div class="caption"></div>
           <p style="text-align:center"></p>
             <h3><b>Top 5 Gaming Stocks</b></h3>
@@ -165,15 +206,12 @@
     </div>
     </div>
     </div>
+  </div>
 
-  <!-- Section: Footer -->
-  <footer>
-    <div style="color: white">Copyright &copy; Team React 2022</div>
-  </footer>
-  
-  <!-- Scripts -->
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script type="text/javascript" src="../js/main.js"></script>
+    <!-- Section: Footer -->
+    <footer>
+      <div style="color: white">Copyright &copy; Team React 2022</div>
+    </footer>
   </body>
 </html>
 

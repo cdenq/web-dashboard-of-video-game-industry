@@ -46,9 +46,5 @@ def dashboard():
     # return "hi"
     return render_template('dashboard.html', steamData = steam_data, twitchData = twitch_data, googleLineData = gline_data, googleGeoData = ggeo_data, yahooData = yahoo_data)
 
-@app.route('/1')
-def test():
-    return render_template('index.html')
-
 if __name__ == "__main__":
     app.run(debug=True)
