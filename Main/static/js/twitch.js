@@ -26,7 +26,7 @@ var Viewdata = [
         }]
     }
   
-  Plotly.newPlot('twitch', Viewdata, layout);
+  // Plotly.newPlot('twitch', Viewdata, layout);
 
 };
 

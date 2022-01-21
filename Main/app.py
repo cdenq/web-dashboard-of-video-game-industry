@@ -2,7 +2,7 @@
 # DEPENDENCIES + SETUP
 #------------------------
 # dependencies
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 import pymongo as pym
 from bson import json_util
 import json
@@ -29,22 +29,20 @@ def home():
 @app.route('/data')
 def data():
     # create individual variables for each collection
-    # steam_data = [doc for doc in db['steam_charts'].find()]
-    # twitch_data = db['items'].find()
-    # gline_data = db['gtrends_multiline'].find()
-    # ggeo_data =  db['gtrends_geo'].find()
-    # yahoo_data = db['y_finance'].find()
+    steam_data = list(db['steam_charts'].find())
+    twitch_data = list(db['items'].find())
+    gline_data = list(db['gtrends_multiline'].find())
+    ggeo_data =  list(db['gtrends_geo'].find())
+    yahoo_data = list(db['y_finance'].find())
 
-    # steam_data = json.dumps(steam_data, default=json_util.default)
-    steam_data = json.dumps(list(db['steam_charts'].find()), indent = 2)
-    twitch_data = json.dumps(list(db['items'].find()), indent = 2)
-    gline_data = json.dumps(list(db['gtrends_multiline'].find()), indent = 2)
-    ggeo_data = json.dumps(list(db['gtrends_geo'].find()), indent = 2)
-    yahoo_data = json.dumps(list(db['y_finance'].find()), indent = 2)
+    steamData = json.loads(json_util.dumps(steam_data))
+    twitchData = json.loads(json_util.dumps(twitch_data))
+    googleLineData = json.loads(json_util.dumps(gline_data))
+    googleGeoData = json.loads(json_util.dumps(ggeo_data))
+    yahooData = json.loads(json_util.dumps(yahoo_data))
 
     # return data
-    return [steam_data, twitch_data, gline_data, ggeo_data, yahoo_data]
-    
+    return jsonify([steamData, twitchData, googleLineData, googleGeoData, yahooData])
 
 # dashboard route
 @app.route('/dashboard')

@@ -1,11 +1,11 @@
 //---------------------------------------------------------
 //GOOGLE MULTILINE INIT
 //---------------------------------------------------------
-function graphGoogleLine(gline_data) {
-    let googleLineTitle = `Apex Search Relevancy Over Time`;
+function graphGoogleLine(data, title) {
+    let googleLineTitle = `${title}'s Search Relevancy Over Time`;
 
-    let gMonths = gline_data.map(item => item.Month);
-    let gMonthsValues = gline_data.map(item => item.Apex);
+    let gMonths = data.map(item => item.Month);
+    let gMonthsValues = data.map(item => item.Apex);
 
     let trace1 = {
         x: gMonths,
@@ -20,10 +20,6 @@ function graphGoogleLine(gline_data) {
     };
 
     Plotly.newPlot('gline', googleLineTraceData, googleLineLayout);
-};
-
-function testerFunction(data) {
-    console.log(data);
 };
 
 //---------------------------------------------------------
