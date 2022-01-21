@@ -1,6 +1,13 @@
 //---------------------------------------------------------
 //TWITCH VIEWS
 //---------------------------------------------------------
+
+ // Fetch the local json data and assign it to the global variable 'data'
+const response = await fetch("../../views.json");
+data = await response.json();
+console.log(data);
+
+
 function twitchbar() {
 
 var Viewdata = [
