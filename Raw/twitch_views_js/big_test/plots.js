@@ -1,38 +1,38 @@
-async function main() {
+// async function main() {
 
-    // Fetch the local json data and assign it to the global variable 'data'
-    const response = await fetch("./views2.json");
-    data = await response.json();
-    console.log(data)
+//     // Fetch the local json data and assign it to the global variable 'data'
+//     const response = await fetch("./views2.json");
+//     data = await response.json();
+//     console.log(data)
   
   
-    // Use the sample names in the data to populate the select box with options
-    data.GAMES.forEach(sample => {
-      const option = document.createElement("option");
-      option.textContent = sample;
-      document.querySelector("#selDataset").append(option);
-    });
+//     // Use the sample names in the data to populate the select box with options
+//     data.GAMES.forEach(sample => {
+//       const option = document.createElement("option");
+//       option.textContent = sample;
+//       document.querySelector("#selDataset").append(option);
+//     });
   
   
-    // Setup an event listener on the select box to change the charts when a new sample is selected
-    document.querySelector("#selDataset").addEventListener("change", event => {
-      buildCharts(event.target.value);
-      buildMetadata(event.target.value);
-    })
+//     // Setup an event listener on the select box to change the charts when a new sample is selected
+//     document.querySelector("#selDataset").addEventListener("change", event => {
+//       buildCharts(event.target.value);
+//       buildMetadata(event.target.value);
+//     })
   
   
-    // Set the inital value for the select box
-    document.querySelector("#selDataset").value = data.GAMES[0];
+//     // Set the inital value for the select box
+//     document.querySelector("#selDataset").value = data.GAMES[0];
   
   
-    // Use the first sample from the list to build the initial plots
-    buildCharts(data.GAMES[0]);
-    buildMetadata(data.GAMES[0]);
-  }
+//     // Use the first sample from the list to build the initial plots
+//     buildCharts(data.GAMES[0]);
+//     buildMetadata(data.GAMES[0]);
+//   }
   
   
   
-  function buildCharts(gamebar) {
+  function buildCharts(result, title) {
   
       // Filter the data to the specific sample we are interested in, there will be only one result
       const result = data.metadata.filter(sampleObj => sampleObj.VIEWS == gamebar)[0];
@@ -61,26 +61,44 @@ async function main() {
       // ];
   
       // Plotly.newPlot("bubble", bubbleData, bubbleLayout);
-  
-      var yticks = result.GAME.slice(0, 10).map(gameID => `Game ${gameID}`).reverse();
+      let average = 95600
+      [CSGO, GOta, etc..]
+
+      let realTitle = "";
+
+      if (title == 'apex') {
+        realTitle = "Apex Legends"
+      } else if ()
+      ..
+      else
+      ;
+
+
       var barData = [
         {
-          y: yticks,
-          x: result.VIEWS.slice(0, 10).reverse(),
+          y: result[realTitle],
+          x: title,
           text: result.GAME.slice(0, 10).reverse(),
           type: "bar",
           orientation: "h",
         }
       ];
+      let avgData = {
+          y: average,
+          x: 'Average Top 5',
+          type: "bar",
+          orientation: "h"
+        };
+      
+      let traceData = [barData, avgData]
   
       var barLayout = {
         title: "Views Per Game",
         margin: { t: 30, l: 150 }
       };
   
-      Plotly.newPlot("bar", barData, barLayout);
-  
-  }
+      Plotly.newPlot("twitch", traceData, barLayout);
+  };
   
   
   async function buildMetadata(sample) {

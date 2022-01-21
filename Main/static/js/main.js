@@ -18,7 +18,8 @@ async function main() {
   let googleLineData = data[2];
   let googleGeoData = data[3];
   let yahooData = data[4];
-
+  console.log(twitchData);
+  
   // Set the default game title in dropdown, APEX
   document.querySelector("#selDataset").value = 'apex';
 
