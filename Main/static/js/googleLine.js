@@ -4,8 +4,8 @@
 function graphGoogleLine(data, title) {
     let googleLineTitle = `${title}'s Search Relevancy Over Time`;
 
-    let gMonths = data.map(item => item.Month);
-    let gMonthsValues = data.map(item => item.Apex);
+    let gMonths = data.map(item => item['Month']);
+    let gMonthsValues = data.map(item => item[title]);
 
     let trace1 = {
         x: gMonths,
@@ -16,7 +16,43 @@ function graphGoogleLine(data, title) {
     let googleLineTraceData = [trace1];
 
     let googleLineLayout = {
-        title: googleLineTitle
+        title: googleLineTitle,
+        gridcolor: '#bdbdbd',
+        gridwidth: 2,
+        xaxis: {
+          title: 'Month-Day by Year',
+          titlefont: {
+            family: 'Arial, sans-serif',
+            size: 18,
+            color: 'black'
+          },
+          showticklabels: true,
+          tickangle: 'auto',
+          tickfont: {
+            family: 'Old Standard TT, serif',
+            size: 14,
+            color: 'lightgrey'
+          },
+          exponentformat: 'e',
+          showexponent: 'all'
+        },
+        yaxis: {
+          title: 'Search Popularity Index',
+          titlefont: {
+            family: 'Arial, sans-serif',
+            size: 18,
+            color: 'black'
+          },
+          showticklabels: true,
+          tickangle: 0,
+          tickfont: {
+            family: 'Old Standard TT, serif',
+            size: 14,
+            color: 'lightgrey'
+          },
+          exponentformat: 'e',
+          showexponent: 'all'
+        }
     };
 
     Plotly.newPlot('gline', googleLineTraceData, googleLineLayout);
@@ -25,19 +61,21 @@ function graphGoogleLine(data, title) {
 //---------------------------------------------------------
 //GOOGLE MULTILINE RESTYLE
 //---------------------------------------------------------
-function restyleGoogleLine(valueChange) {
+function restyleGoogleLine(value) {
   // Initialize an empty array for the country's data
-  let data = [];
+  let newData = [];
 
-  if (event.target.value == '') {
-      data = us;
-  }
-  else if (event.target.value == 'uk') {
-      data = uk;
-  }
-  else if (event.target.value == 'canada') {
-      data = canada;
-  }
+  if (event.target.value == 'apex') {
+        newData = data.map(item => item['Apex']);
+    } else if (event.target.value == 'csgo') {
+        newData = data.map(item => item['CSGO']);
+    } else if (event.target.value == 'dota') {
+        newData = data.map(item => item['Dota 2']);
+    } else if (event.target.value == 'gta') {
+        newData = data.map(item => item['GTA V']);
+    } else { //is rust
+        newData = data.map(item => item['Rust']);
+    };
 
-  Plotly.restyle("pie", "values", [data]);
+  Plotly.restyle("gline", "y", [newData]);
 };

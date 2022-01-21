@@ -2,15 +2,9 @@
 //INITIAL GOOGLE GEOMAP
 //---------------------------------------------------------
 function graphGoogleGeo(data, title) {
-    //NOTE: from data...
-    //[1] = steam
-    //[2] = twitch
-    //[3] = gline
-    //[4] = ggeo
-    //[5] = yahoo
-
     // Create a map object.
     let myMap = L.map("map", {
+        //center location for USA
         center: [37.0902, 95.7129],
         zoom: 3
     });
@@ -21,16 +15,16 @@ function graphGoogleGeo(data, title) {
     }).addTo(myMap);
 
     // Loop through the cities array, and create one marker for each city object.
-    for (var i = 0; i < googleGeoData.length; i++) {
+    for (let i = 0; i < data.length; i++) {
         // Conditionals for state points
-        var color = "";
-        if (googleGeoData[i].Apex > 75) {
+        let color = "";
+        if (data[i][title] > 75) {
         color = "red";
         }
-        else if (googleGeoData[i].Apex > 50) {
+        else if (data[i][title] > 50) {
         color = "yellow";
         }
-        else if (googleGeoData[i].Apex > 25) {
+        else if (data[i][title] > 25) {
         color = "green";
         }
         else {
@@ -38,12 +32,16 @@ function graphGoogleGeo(data, title) {
         }
     
         // Add circles to the map.
-        L.circle([googleGeoData[i].Latitude,googleGeoData[i].Longitude], {
-        fillOpacity: 0.75,
-        color: "white",
-        fillColor: color,
-        // Adjust the radius.
-        radius: googleGeoData[i].Apex / 10
-        }).bindPopup(`<h1>${googleGeoData[i].Region}, ${googleGeoData[i].State}</h1> <hr> <h3>Points: ${googleGeoData[i].Apex}</h3>`).addTo(myMap);
+        L.circle([data[i].Latitude, data[i].Longitude], {
+            fillOpacity: 0.75,
+            color: "white",
+            fillColor: color,
+            // Adjust the radius.
+            radius: data[i][title] / 10
+        }).bindPopup(`<h1>${data[i].Region}, ${data[i].State}</h1> <hr> <h3>Points: ${data[i][title]}</h3>`).addTo(myMap);
     }
 };
+
+//---------------------------------------------------------
+//RESTYLE GOOGLE GEOMAP
+//---------------------------------------------------------

@@ -39,22 +39,19 @@ var trace1 = {
     name: 'EA'
   };
   
-  var data = [ trace1, trace2, trace3, trace4, trace5];
+  var traceData = [ trace1, trace2, trace3, trace4, trace5];
   
   var layout = {
     title:'Yahoo Gaming Stock Data'
   };
   
-  Plotly.newPlot('myDiv', data, layout);
+  Plotly.newPlot('yahoo', traceData, layout);
 
 //---------------------------------------------------------
 //YAHOO MULTILINE RESTYLE
 //---------------------------------------------------------
 function restyleYahoo() {
 };
-
-
-
 
 //alternative code?
 // import * as yf from 'yfinance';

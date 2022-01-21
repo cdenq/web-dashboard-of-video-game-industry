@@ -10,7 +10,7 @@
   <!-- Title -->
   <title>Trending Games</title>
   
-  <!-- SCRIPTS -->
+  <!-- SETUP SCRIPTS -->
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <!-- Plotly Plugin -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- Our CSS -->
+    <link rel="stylesheet" href="/Main/static/css/style.css">
   
   <!-- All Black Background -->
   <style> body {background-color: black;} </style>
@@ -58,7 +60,6 @@
     </div>
   </div>
 
-  <!-- Charlotte edited text/added centering -->
   <!-- Add Steam Charts -->
   <div class="row">
     <div class="col-md-12">
@@ -77,7 +78,6 @@
     </div>
   </div>
 
-    <!-- Charlotte edited text/added centering -->
   <!-- Twitch -->
   <div class="row">
     <div class="col-md-12">
@@ -107,7 +107,8 @@
     <div class="page-header">
       <h2 class="text-center" style="color: limegreen"><b>Google GeoMaps</b></h2>
       <div class="col-md-6">
-        <div id="ggeo"></div>
+        <div id="map"></div>
+        <p style="color: aliceblue;">"Search Popularity Index" (SPI) measures the frequency of our specified search term in the top "trending Google searches". </br> For example, an SPI for 100 for the game "Apex" would mean 100% of of the top trending Google searches contained "Apex". </p>
       </div>
     </div>
   </div>
