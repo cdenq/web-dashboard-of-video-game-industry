@@ -13,6 +13,7 @@ import numpy as np
 from pprint import pprint
 import matplotlib.pyplot as plt
 from time import sleep
+from random import randint
 #yfinance - open-source API pip 
 import yfinance as yf
 
@@ -71,7 +72,8 @@ for url in range(0,5):
             back = front.split("<")[0]
             views.append(back)
     
-    sleep(5)
+    sleep(randint(5,10))
+    
 
 # Upload to DataFrame 
 df = pd.DataFrame(games, columns = ['GAME'])
