@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 //TWITCH VIEWS
 //---------------------------------------------------------
-function twitchbar() {
+function twitchbar(results, title) {
 
 var Viewdata = [
   {

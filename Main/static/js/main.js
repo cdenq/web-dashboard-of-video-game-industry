@@ -7,18 +7,12 @@ async function main() {
   let response = await fetch(url);
   data = await response.json();
 
-  //NOTE: from data...
-  //[1] = steam
-  //[2] = twitch
-  //[3] = gline
-  //[4] = ggeo
-  //[5] = yahoo
+  // set variables
   let steamData = data[0];
   let twitchData = data[1];
   let googleLineData = data[2];
   let googleGeoData = data[3];
   let yahooData = data[4];
-  console.log(twitchData);
   
   // Set the default game title in dropdown, APEX
   document.querySelector("#selDataset").value = 'apex';
@@ -37,7 +31,7 @@ async function main() {
   graphGoogleLine(googleLineData, 'Apex');
   graphGoogleGeo(googleGeoData, 'Apex');
   graphSteam();
-  twitchbar();
+  twitchbar(twitchData, 'Apex');
   graphYahoo();
 
   // document.querySelector("#selDataset").addEventListener("change", event => {
@@ -45,7 +39,6 @@ async function main() {
   //   restyleGoogleGeo(event.target.value);
   //   restyleSteam(event.target.value);
   //   restyleTwitch(event.target.value);
-  //   restyleYahoo(event.target.value);
   // });
 };
 

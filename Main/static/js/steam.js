@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 //STEAM MULTILINE INIT
 //---------------------------------------------------------
-function graphSteam() {
+function graphSteam(results, title) {
   let heightGraph = 200;
   let widthGraph = 400;
   let mL = 0;
