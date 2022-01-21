@@ -5,7 +5,7 @@ function twitchbar() {
 
 var Viewdata = [
   {
-    x: ['Counter Strike: Global Offensive', 'Dota 2', 'PUBG: Battlegrounds', 'Apex Legends', 'Grand Theft Auto V'],
+    x: ['Counter Strike: Global Offensive', 'Dota 2', 'Rust', 'Apex Legends', 'Grand Theft Auto V'],
     y: [5000,72900,21900,93200,285000],
     type: 'bar',
     title: 'Total Views (Rounded to Nearest 1000)'
