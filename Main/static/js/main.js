@@ -35,12 +35,13 @@ async function main() {
   graphTwitch(twitchData, defaultValue);
   graphYahoo(yahooData);
 
-  // document.querySelector("#selDataset").addEventListener("change", event => {
-  //   restyleGoogleLine(event.target.value);
-  //   restyleGoogleGeo(event.target.value);
-  //   restyleSteam(event.target.value);
-  //   restyleTwitch(event.target.value);
-  // });
+  // Change up charts based on click
+  document.querySelector("#selDataset").addEventListener("change", event => {
+    restyleGoogleLine(event.target.value);
+    restyleGoogleGeo(event.target.value);
+    restyleSteam(event.target.value);
+    restyleTwitch(event.target.value);
+  });
 };
 
 //---------------------------------------------------------

@@ -88,16 +88,17 @@ function graphGoogleLine(data, gameTitle) {
 //GOOGLE MULTILINE RESTYLE
 //---------------------------------------------------------
 function restyleGoogleLine(value) {
+  console.log(`restyle line receives [${value}]`);
   // Initialize an empty array for the country's data
   let newData = [];
 
-  if (event.target.value == 'apex') {
+  if (value == 'apex') {
         newData = data.map(item => item['Apex']);
-    } else if (event.target.value == 'csgo') {
+    } else if (value == 'csgo') {
         newData = data.map(item => item['CSGO']);
-    } else if (event.target.value == 'dota') {
+    } else if (value == 'dota') {
         newData = data.map(item => item['Dota 2']);
-    } else if (event.target.value == 'gta') {
+    } else if (value == 'gta') {
         newData = data.map(item => item['GTA V']);
     } else { //is rust
         newData = data.map(item => item['Rust']);

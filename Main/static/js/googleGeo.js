@@ -73,3 +73,7 @@ function graphGoogleGeo(data, gameTitle) {
 //---------------------------------------------------------
 //RESTYLE GOOGLE GEOMAP
 //---------------------------------------------------------
+function restyleGoogleGeo(value) {
+    console.log(`restyle geo receives [${value}]`);
+    graphGoogleGeo(data, value)
+};

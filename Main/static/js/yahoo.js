@@ -1,50 +1,72 @@
 //---------------------------------------------------------
 //YAHOO MULTILINE INIT
 //---------------------------------------------------------
-function graphYahoo(yahooData) {
+function graphYahoo(data) {
+  // title
+  let yahooTitle = `Gaming Stock Data Over the Past 5 Years`;
 
-var trace1 = {
-    x: ["2016", "2017", "2018", "2019", "2020", "2021", "2022"],
-    y: [20, 25, 50, 45, 50, 75, 60],
-    mode: 'lines+markers',
-    name: 'NTDOY'
+  // testing functions
+  // console.log(data);
+  // console.log(data.length);
+
+  // the specific gaming stocks we want to look at
+  let stockNames = ['NTDOY', 'SONY', 'MSFT', 'ATVI', 'EA'];
+  let yahooLineTraceData = [];
+  
+  for (let i = 0; i < stockNames.length; i++) {
+    let yMonths = data.map(item => item[stockNames[i]]);
+    let currentTrace = {
+      x: `Timestep ${i}`,
+      y: yMonths,
+      name: stockNames[i],
+      label: stockNames[i],
+      text: `Timestep ${i}`,
+      type: 'line'
+    };
+    yahooLineTraceData.push(currentTrace);
   };
-  
-  var trace2 = {
-    x: ["2016", "2017", "2018", "2019", "2020", "2021", "2022"],
-    y: [25, 35, 50, 50, 75, 100, 125],
-    mode: 'lines+markers',
-    name: 'SONY'
+
+  let yahooLineLayout = {
+      title: yahooTitle,
+      gridcolor: '#bdbdbd',
+      gridwidth: 2,
+      xaxis: {
+        title: 'Timestep',
+        titlefont: {
+          family: 'Arial, sans-serif',
+          size: 20,
+          color: 'black'
+        },
+        showticklabels: true,
+        tickangle: 'auto',
+        tickfont: {
+          family: 'Old Standard TT, serif',
+          size: 16,
+          color: 'lightgrey'
+        },
+        exponentformat: 'e',
+        showexponent: 'all'
+      },
+      yaxis: {
+        title: 'Stock Price',
+        titlefont: {
+          family: 'Arial, sans-serif',
+          size: 20,
+          color: 'black'
+        },
+        showticklabels: true,
+        tickangle: 0,
+        tickfont: {
+          family: 'Old Standard TT, serif',
+          size: 16,
+          color: 'lightgrey'
+        },
+        exponentformat: 'e',
+        showexponent: 'all'
+      }
   };
-  
-  var trace3 = {
-    x: ["2016", "2017", "2018", "2019", "2020", "2021", "2022"],
-    y: [50, 60, 85, 95, 155, 225, 325],
-    mode: 'lines+markers',
-    name: 'MSFT'
-  };
-  
-  var trace4 = {
-    x: ["2016", "2017", "2018", "2019", "2020", "2021", "2022"],
-    y: [45, 45, 55, 52, 75, 90, 55],
-    mode: 'lines+markers',
-    name: 'ATVI'
-  };
-  
-  var trace5 = {
-    x: ["2016", "2017", "2018", "2019", "2020", "2021", "2022"],
-    y: [60, 75, 105, 85, 105, 145, 135],
-    mode: 'lines+markers',
-    name: 'EA'
-  };
-  
-  var traceData = [ trace1, trace2, trace3, trace4, trace5];
-  
-  var layout = {
-    title:'Yahoo Gaming Stock Data'
-  };
-  
-  Plotly.newPlot('yahoo', traceData, layout);
+
+  Plotly.newPlot('yahoo', yahooLineTraceData, yahooLineLayout);
 };
 
 //---------------------------------------------------------
