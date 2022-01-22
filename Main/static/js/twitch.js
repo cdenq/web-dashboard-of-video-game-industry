@@ -3,7 +3,7 @@
 //---------------------------------------------------------
 function twitchData(data, title) {
 
-  let views = data.map(item => item[VIEWS]);
+  let views = data.map(item => item[1]);
   let title = ["apex", "csgo", "dota", "gta", "rust"]
   let realTitle = ["Apex Legends", "Counter-Strike: Global Offensive", "Dota 2", "Grand Theft Auto V", "Rust"];
   let average = 95600
