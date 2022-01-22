@@ -112,4 +112,119 @@ function buildCharts(data, title) {
   
 //   };
   
-  twitchbar()
+  // twitchbar()
+
+
+
+
+
+
+
+  // function twitchbar(results, title) {
+
+  //   var Viewdata = [{
+  //       x: ['Counter Strike: Global Offensive', 'Dota 2', 'Rust', 'Apex Legends', 'Grand Theft Auto V'],
+  //       y: [51200,65000,88000,88900,214000],
+  //       type: 'bar',
+  //       shapes: [{
+  //         type: 'line',
+  //         x0: 0,
+  //         y0: 507100,
+  //         x1: 1,
+  //         y0: 507100,
+  //         line: {
+  //           color: 'red',
+  //           width: 2,
+  //           dash: 'dot'
+  //         }
+  //       }]
+  //     }];
+      // let avgData = {
+      //   y: 507100,
+      //   x: 'Average Top 5',
+      //   type: "bar",
+      //   orientation: "h"
+      // };
+  
+  //     var layout = {
+  //       height: 600,
+  //       width: 900,
+  //       title: "Weekly Twitch Views",
+  //       xaxis:{
+  //         title: 'Video Game',
+  //       },
+  //       yaxis:{
+  //         title: "Number of Views",
+  //       },
+  //      };      
+      
+  //     Plotly.newPlot('twitch', Viewdata, layout);
+    
+  //   };
+    
+  // twitchbar()
+  
+  
+  
+  
+  
+  
+  
+  //---------------------------------------------------------
+  //TWITCH VIEWS INTERACTIVE
+  //---------------------------------------------------------
+  // console.log('hi')
+  
+  // function twitchbar(data, gameTitle) {
+  
+  //   let twitchtitle = `${gameTitle}' Views on Twitch.tv`
+  
+  //   let views = data.map(item => item[1]);
+  //   var gameTitle = ["apex", "csgo", "dota", "gta", "rust"];
+  //   let realTitle = ["Apex Legends", "Counter-Strike: Global Offensive", "Dota 2", "Grand Theft Auto V", "Rust"];
+  //   let average = 95600
+  
+  //    var barData = [
+  //     {
+  //       y: result[realTitle],
+  //       x: views,
+  //       type: "bar",
+  //       orientation: "h",
+  //     }
+  //   ];
+  //   let avgData = {
+  //       y: average,
+  //       x: 'Average Top 5',
+  //       type: "bar",
+  //       orientation: "h"
+  //     };
+    
+  //   let traceData = [barData, avgData]
+  
+  //   var barLayout = {
+  //     title: "Views Per Game",
+  //     margin: { t: 30, l: 150 }
+  //   };
+  
+  //   newData = []
+    
+  //   if (gameTitle == 'apex') {
+  //     realTitle = "Apex Legends";
+  //     newData = data.map(item => item['Apex Legends']);
+  //   } else if (gameTitle == 'csgo') {
+  //     realTitle = "Counter-Strike: Global Offensive"
+  //     newData = data.map(item => item['Counter-Strike: Global Offensive']);
+  //   } else if (gameTitle = "dota") {
+  //     realTitle = "Dota 2" 
+  //     newData = data.map(item => item['Dota 2']);
+  //   } else if (gameTitle = "gta"){
+  //     realTitle = "Grand Theft Auto V"
+  //     newData = data.map(item => item['Grand Theft Auto V']);
+  //   } else if (gameTitle = "rust"){
+  //     realTitle = "Rust"
+  //     newData = data.map(item => item['Rust']);
+  //   }
+  
+  //   Plotly.newPlot("twitch", traceData, barLayout);
+  // // };
+  // >>>>>>> Stashed changes
