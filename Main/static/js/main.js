@@ -30,7 +30,7 @@ async function main() {
 
   // Set the default charts
   graphGoogleLine(googleLineData, defaultValue);
-  // graphGoogleGeo(googleGeoData, defaultValue);
+  graphGoogleGeo(googleGeoData, defaultValue);
   graphSteam(steamData, defaultValue);
   graphTwitch(twitchData, defaultValue);
   graphYahoo(yahooData);

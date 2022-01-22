@@ -29,9 +29,9 @@ function graphGoogleLine(data, gameTitle) {
     let gMonthsValues = data.map(item => item[realTitle]);
 
     // console.log();
-    console.log(data);
-    console.log(gMonths);
-    console.log(gMonthsValues);
+    // console.log(data);
+    // console.log(gMonths);
+    // console.log(gMonthsValues);
 
     let trace1 = {
         x: gMonths,
