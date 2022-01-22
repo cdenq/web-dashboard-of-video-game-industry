@@ -21,8 +21,8 @@ function graphGoogleGeo(data, gameTitle) {
     // Create a map object.
     let myMap = L.map("map", {
         //center location for USA
-        center: [37.0902, 95.7129],
-        zoom: 3
+        center: [39.131742442581846, -95.55603094725282],
+        zoom: 4
     });
 
     // Add a tile layer.
@@ -61,12 +61,12 @@ function graphGoogleGeo(data, gameTitle) {
 
         // Add circles to the map.
         L.circle(gLocation, {
-            fillOpacity: 0.75,
+            fillOpacity: 100,
             color: "white",
             fillColor: colorRadius,
             // Adjust the radius.
-            radius: gValue/10
-        }).bindPopup(`<h1>${data[i]['Region']}, ${data[i]['State']}</h1> <hr> <h3>Points: ${gValue}</h3>`).addTo(myMap);
+            radius: gValue*2000
+        }).bindPopup(`<h3>${data[i]['Region']}, ${data[i]['State']}</h3> <hr> <h6>SPI: ${gValue}</h6>`).addTo(myMap);
     };
 };
 
