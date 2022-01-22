@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Meta -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <!-- Title -->
+  <title>Trending Games</title>
+  
+  <!-- SETUP SCRIPTS -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin="" />
+    <!-- Leaflet JavaScript code -->
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <!-- Plotly Plugin -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- Our CSS -->
+    <link rel="stylesheet" href="/Main/static/css/style.css">
+  
+  <!-- All Black Background -->
+  <style> body {background-color: black;} </style>
+</head>
+
+<body>
+  <!-- Create Container -->
+  <div class="container">
+    <!-- Add Jumbotron w/ Image URL -->
+    <div class="jumbotron text-center" style="background-image: url(https://i.pinimg.com/originals/a2/94/b5/a294b593769b6bf61b55c152032e7459.jpg); background-size: 100%; height: 350px;">
+      <h1 class="display-4" style="color: white">Trending Games Dashboard</h1>
+    </div>
+    <!-- Dropdown -->
+    <div class="row">
+      <div class="col-md-2">
+        <div class="navbar">
+          <h5 style= "color: lightskyblue"><b>Latest Game Data:</b></h5>
+          <select id="selDataset" onchange="optionChanged(this.value)">
+            <option value ="apex">Apex Legends</option>
+            <option value ="csgo">Counter-Strike:Global Offensive</option>
+            <option value ="dota">Dota 2</option>
+            <option value ="gta">Grand Theft Auto V</option>
+            <option value ="rust">Rust</option>
+            
+            <div class="panel panel-primary">
+              <div class="panel-heading"><h3 class="panel-title">Game Info</h3></div>
+              <div id="sample-metadata" class="panel-body"></div>
+            </div>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Steam Charts -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="media">
+        <div class="media-body">
+          <h2 class="text-center" style="color: darkcyan"><b>Steam</b></h2>
+          <center>
+            <div id="steam1"></div>
+            <div id="steam2"></div>
+            <div id="steam3"></div>
+          </center>
+          <!--Need to fix img tag-->
+          <img src="">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Twitch -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="media">
+        <div class="media-body">
+          <h2 class="text-center" style="color: purple"><b>Twitch</b></h2>
+          <center>
+            <div id="twitch"></div>
+          </center>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+  <!-- Google Trends -->
+  <div class="row" style="margin-top: 80px;">
+    <div class="page-header">
+      <h2 class="text-center" style="color: gold"><b>Google Trends</b></h2>
+      <div class="col-md-6">
+        <div id="gline"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Google Geo -->
+  <div class="row" style="margin-top: 80px;">
+    <div class="page-header">
+      <h2 class="text-center" style="color: limegreen"><b>Google GeoMaps</b></h2>
+      <div class="col-md-6">
+        <div id="map"></div>
+        <p style="color: aliceblue;">"Search Popularity Index" (SPI) measures the frequency of our specified search term in the top "trending Google searches". </br> For example, an SPI for 100 for the game "Apex" would mean 100% of of the top trending Google searches contained "Apex". </p>
+      </div>
+    </div>
+  </div>
+
+  <!--Charlotte New Code From Here Down (added images/fixed formatting)-->
+  <!-- Gaming Stock Data -->
+  <div class="row" style="margin-top: 80px;">
+    <div class="page-header">
+      <h2 class="text-center" style="color: rgb(240, 144, 217)"><b>Gaming Stock Data</b></h2>
+      <div class="col-md-6">
+        <div class="thumbnail">
+          <!-- Plotly graph here -->
+          <div id="yahoo"></div>
+          <div class="caption"></div>
+          <p style="text-align:center"></p>
+            <h3><b>Top 5 Gaming Stocks</b></h3>
+            <table class="purpleHorizon">
+              <thead>
+              <tr>
+              <th></th>
+              <th>NTDOY</th>
+              <th>SONY</th>
+              <th>MSFT</th>
+              <th>ATVI</th>
+              <th>EA</th>
+              </tr>
+              </thead>
+              <tfoot>
+              <tr>
+              <td colspan="5">
+              <div class="links"><a href="#">&laquo;</a>
+              <a class="active" href="#">1</a> <a href="#">2</a>
+              <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a></div>
+              </td>
+              </tr>
+              </tfoot>
+            </table>
+          </div>
+      </div>
+    </div>
+    </div>
+    </div>
+  </div>
+
+    <!-- Section: Footer -->
+    <footer>
+      <div style="color: white">Copyright &copy; Team React 2022</div>
+    </footer>
+    <!-- all JS scripts -->
+    <script src="static/js/googleGeo.js"></script>
+    <script src="static/js/googleLine.js"></script>
+    <script src="static/js/main.js"></script>
+    <script src="static/js/steam.js"></script>
+    <script src="static/js/twitch.js"></script>
+    <script src="static/js/yahoo.js"></script>
+  </body>
+</html>
+

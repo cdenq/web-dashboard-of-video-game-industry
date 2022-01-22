@@ -1,84 +1,32 @@
-// async function main() {
+function buildCharts(data, title) {
 
-//     // Fetch the local json data and assign it to the global variable 'data'
-//     const response = await fetch("./views2.json");
-//     data = await response.json();
-//     console.log(data)
-  
-  
-//     // Use the sample names in the data to populate the select box with options
-//     data.GAMES.forEach(sample => {
-//       const option = document.createElement("option");
-//       option.textContent = sample;
-//       document.querySelector("#selDataset").append(option);
-//     });
-  
-  
-//     // Setup an event listener on the select box to change the charts when a new sample is selected
-//     document.querySelector("#selDataset").addEventListener("change", event => {
-//       buildCharts(event.target.value);
-//       buildMetadata(event.target.value);
-//     })
-  
-  
-//     // Set the inital value for the select box
-//     document.querySelector("#selDataset").value = data.GAMES[0];
-  
-  
-//     // Use the first sample from the list to build the initial plots
-//     buildCharts(data.GAMES[0]);
-//     buildMetadata(data.GAMES[0]);
-//   }
-  
-  
-  
-  function buildCharts(result, title) {
-  
-      // Filter the data to the specific sample we are interested in, there will be only one result
-      const result = data.metadata.filter(sampleObj => sampleObj.VIEWS == gamebar)[0];
-  
-      // // Build a Bubble Chart
-      // var bubbleLayout = {
-      //   title: "Bacteria Cultures Per Sample",
-      //   margin: { t: 0 },
-      //   hovermode: "closest",
-      //   xaxis: { title: "OTU ID" },
-      //   margin: { t: 30}
-      // };
-  
-      // var bubbleData = [
-      //   {
-      //     x: result.otu_ids,
-      //     y: result.sample_values,
-      //     text: result.otu_labels,
-      //     mode: "markers",
-      //     marker: {
-      //       size: result.sample_values,
-      //       color: result.otu_ids,
-      //       colorscale: "Earth"
-      //     }
-      //   }
-      // ];
-  
-      // Plotly.newPlot("bubble", bubbleData, bubbleLayout);
+      let views = data.map(item => item[VIEWS]);
+      let title = ["apex", "csgo", "dota", "gta", "rust"]
+      let realTitle = ["Apex Legends", "Counter-Strike: Global Offensive", "Dota 2", "Grand Theft Auto V", "Rust"];
       let average = 95600
-      [CSGO, GOta, etc..]
-
-      let realTitle = "";
-
+      newData = []
+      
       if (title == 'apex') {
-        realTitle = "Apex Legends"
-      } else if ()
-      ..
-      else
-      ;
-
-
+        realTitle = "Apex Legends";
+        newData = data.map(item => item['Apex Legends']);
+      } else if (title == 'csgo') {
+        realTitle = "Counter-Strike: Global Offensive"
+        newData = data.map(item => item['Counter-Strike: Global Offensive']);
+      } else if (title = "dota") {
+        realTitle = "Dota 2" 
+        newData = data.map(item => item['Dota 2']);
+      } else if (title = "gta"){
+        realTitle = "Grand Theft Auto V"
+        newData = data.map(item => item['Grand Theft Auto V']);
+      } else if (title = "rust"){
+        realTitle = "Rust"
+        newData = data.map(item => item['Rust']);
+      }
+     
       var barData = [
         {
           y: result[realTitle],
-          x: title,
-          text: result.GAME.slice(0, 10).reverse(),
+          x: views,
           type: "bar",
           orientation: "h",
         }
@@ -99,35 +47,69 @@
   
       Plotly.newPlot("twitch", traceData, barLayout);
   };
-  
-  
-  async function buildMetadata(sample) {
+
+  // async function buildMetadata(sample) {
     
     
-    // Filter the data for the object with the desired sample number
-    const result = data.metadata.filter(sampleObj => sampleObj.id == sample)[0];
+  //   // Filter the data for the object with the desired sample number
+  //   const result = data.metadata.filter(sampleObj => sampleObj.id == sample)[0];
   
-    // Select the panel with id of `#sample-metadata`
-    const panel = document.querySelector("#sample-metadata");
+  //   // Select the panel with id of `#sample-metadata`
+  //   const panel = document.querySelector("#sample-metadata");
   
-    // Clear any existing metadata
-    panel.innerHTML = "";
+  //   // Clear any existing metadata
+  //   panel.innerHTML = "";
   
-    // Use `Object.entries` to add each key and value pair to the panel
-    // Hint: Inside the loop, you will need to to append new
-    // elements for each key-value in the metadata.
-    Object.entries(result).forEach(([key, value]) => {
-      const h6 = document.createElement("h6");
-      h6.textContent = `${key.toUpperCase()}: ${value}`
-      panel.append(h6);
-    });
+  //   // Use `Object.entries` to add each key and value pair to the panel
+  //   // Hint: Inside the loop, you will need to to append new
+  //   // elements for each key-value in the metadata.
+  //   Object.entries(result).forEach(([key, value]) => {
+  //     const h6 = document.createElement("h6");
+  //     h6.textContent = `${key.toUpperCase()}: ${value}`
+  //     panel.append(h6);
+  //   });
   
-    // BONUS: Build the Gauge Chart
-    buildGauge(result.wfreq);
+  //   // BONUS: Build the Gauge Chart
+  //   buildGauge(result.wfreq);
   
-  }
+  // }
   
   
-  // Initialize the application
-  let data = {};
-  main();
+  // // Initialize the application
+  // let data = {};
+  // main();
+
+
+  //---------------------------------------------------------
+// //TWITCH VIEWS
+// //---------------------------------------------------------
+// function twitchbar(results, title) {
+
+//   var Viewdata = [
+//     {
+//       x: ['Counter Strike: Global Offensive', 'Dota 2', 'Rust', 'Apex Legends', 'Grand Theft Auto V'],
+//       y: [5000,72900,21900,93200,285000],
+//       type: 'bar',
+//       title: 'Total Views (Rounded to Nearest 1000)'
+//     }];
+    
+//     var layout = {
+//       height: 400,
+//       width: 500
+//      };      
+//         annotation: {
+//           annotations: [{
+//               type: 'line',
+//               mode: 'horizontal',
+//               scaleID: 'y-axis-0',
+//               value: '95600',
+//               borderColor: 'tomato',
+//               borderWidth: 1
+//           }]
+//       }
+    
+//     Plotly.newPlot('twitch', Viewdata, layout);
+  
+//   };
+  
+  twitchbar()
