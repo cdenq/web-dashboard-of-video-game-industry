@@ -228,3 +228,27 @@ function buildCharts(data, title) {
   //   Plotly.newPlot("twitch", traceData, barLayout);
   // // };
   // >>>>>>> Stashed changes
+
+
+
+  //---------------------------------------------------------
+//GOOGLE MULTILINE RESTYLE VIA INDEX
+//---------------------------------------------------------
+function restyleTwitch(value) {
+  // Initialize an empty array for the country's data
+  let newData = [];
+
+  if (event.target.value == 'apex') {
+        newData = data.map(item => item[7][1]);
+    } else if (event.target.value == 'csgo') {
+        newData = data.map(item => item[18][1]);
+    } else if (event.target.value == 'dota') {
+        newData = data.map(item => item[27][1]);
+    } else if (event.target.value == 'gta') {
+        newData = data.map(item => item[43][1]);
+    } else { //is rust
+        newData = data.map(item => item[74][1]);
+    };
+
+  Plotly.restyle("twitch", "y", [newData]);
+};
