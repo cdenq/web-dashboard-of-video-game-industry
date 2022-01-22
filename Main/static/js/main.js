@@ -44,7 +44,6 @@ async function main() {
   document.querySelector("#selDataset").addEventListener("change", event => {
     restyleGoogleLine(googleLineData, event.target.value);
     // restyleGoogleGeo(googleGeoData, event.target.value);
-    restyleSteam(steamData, event.target.value);
     restyleTwitch(twitchData, event.target.value);
   });
 };
