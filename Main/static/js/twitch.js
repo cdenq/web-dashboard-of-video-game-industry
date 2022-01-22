@@ -1,15 +1,14 @@
 //---------------------------------------------------------
 //TWITCH VIEWS
 //---------------------------------------------------------
-function twitchData(data, title) {
+function twitchData(data, gameTitle) {
 
   let views = data.map(item => item[1]);
-  let title = ["apex", "csgo", "dota", "gta", "rust"]
+  var gameTitle = ["apex", "csgo", "dota", "gta", "rust"];
   let realTitle = ["Apex Legends", "Counter-Strike: Global Offensive", "Dota 2", "Grand Theft Auto V", "Rust"];
   let average = 95600
 
- 
-  var barData = [
+   var barData = [
     {
       y: result[realTitle],
       x: views,
@@ -33,19 +32,19 @@ function twitchData(data, title) {
 
   newData = []
   
-  if (title == 'apex') {
+  if (gameTitle == 'apex') {
     realTitle = "Apex Legends";
     newData = data.map(item => item['Apex Legends']);
-  } else if (title == 'csgo') {
+  } else if (gameTitle == 'csgo') {
     realTitle = "Counter-Strike: Global Offensive"
     newData = data.map(item => item['Counter-Strike: Global Offensive']);
-  } else if (title = "dota") {
+  } else if (gameTitle = "dota") {
     realTitle = "Dota 2" 
     newData = data.map(item => item['Dota 2']);
-  } else if (title = "gta"){
+  } else if (gameTitle = "gta"){
     realTitle = "Grand Theft Auto V"
     newData = data.map(item => item['Grand Theft Auto V']);
-  } else if (title = "rust"){
+  } else if (gameTitle = "rust"){
     realTitle = "Rust"
     newData = data.map(item => item['Rust']);
   }
