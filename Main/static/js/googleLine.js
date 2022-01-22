@@ -87,11 +87,9 @@ function graphGoogleLine(data, gameTitle) {
 //---------------------------------------------------------
 //GOOGLE MULTILINE RESTYLE
 //---------------------------------------------------------
-function restyleGoogleLine(value) {
-  console.log(`restyle line receives [${value}]`);
-  // Initialize an empty array for the country's data
+function restyleGoogleLine(data, value) {
+  // Redraw the data for the graphs
   let newData = [];
-
   if (value == 'apex') {
         newData = data.map(item => item['Apex']);
     } else if (value == 'csgo') {
@@ -102,7 +100,13 @@ function restyleGoogleLine(value) {
         newData = data.map(item => item['GTA V']);
     } else { //is rust
         newData = data.map(item => item['Rust']);
-    };
-
+  };
   Plotly.restyle("gline", "y", [newData]);
+
+  // Redrwaw the title for the graphs
+  let newGoogleLineTitle = `${cap(value)}'s Search Relevancy Over Time`;
+  let update = {
+    title: newGoogleLineTitle
+  };
+  Plotly.relayout('gline', update)
 };

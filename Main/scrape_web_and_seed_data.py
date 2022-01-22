@@ -227,7 +227,7 @@ for ticker in tickers_list:
     data[ticker] = yf.download(ticker, 
                                start_date,
                                end_date)['Adj Close']
-
+data.reset_index()
 gamingstockdata = data.to_dict('records')
 
 collection = db.y_finance

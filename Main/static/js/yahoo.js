@@ -19,8 +19,7 @@ function graphYahoo(data) {
       x: `Timestep ${i}`,
       y: yMonths,
       name: stockNames[i],
-      label: stockNames[i],
-      text: `Timestep ${i}`,
+      text: stockNames[i],
       type: 'line'
     };
     yahooLineTraceData.push(currentTrace);
