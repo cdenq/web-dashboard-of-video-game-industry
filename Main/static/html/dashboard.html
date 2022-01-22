@@ -20,15 +20,40 @@
       integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
       crossorigin=""></script>
     <!-- Our CSS -->
-    <link rel="stylesheet" href="/Main/static/css/style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <!-- Plotly Plugin -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
   
-  <!-- All Black Background -->
-  <style> body {background-color: black;} </style>
+  <!-- InLine style -->
+  <style> 
+    body {
+      background-color: black;
+    } 
+
+    .float-container {
+      padding: 5px;
+    }
+    
+    .float-child-a {
+      width: 38%;
+      float: left;
+      padding: 10px;
+    }
+    .float-child-b {
+      width: 62%;
+      float: left;
+      padding: 10px;
+    }
+    .float-child-c {
+      width: 62%;
+      display:block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+  </style>
 </head>
 
 <body>
@@ -38,6 +63,7 @@
     <div class="jumbotron text-center" style="background-image: url(https://i.pinimg.com/originals/a2/94/b5/a294b593769b6bf61b55c152032e7459.jpg); background-size: 100%; height: 350px;">
       <h1 class="display-4" style="color: white">Trending Games Dashboard</h1>
     </div>
+
     <!-- Dropdown -->
     <div class="row">
       <div class="col-md-2">
@@ -47,89 +73,84 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Add Steam Charts -->
-  <div class="row">
-    <div class="col-md-12">
-      <div class="media">
-        <div class="media-body">
+    <!-- Row 1 -->
+    <div class="float-container">
+      <!-- Twitch -->
+      <div class="float-child-a">
+        <center>
+          <h2 class="text-center" style="color: purple"><b>Twitch</b></h2>
+          <hr>
+          <div id="twitch"></div>
+        </center>
+      </div>
+      
+      <!-- Google Trends -->
+      <div class="float-child-b">
+        <center>
+          <h2 class="text-center" style="color: gold"><b>Google Trends</b></h2>
+          <hr>
+          <div id="gline"></div>
+        </center>
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="float-container">
+      <!-- Google Geo -->
+      <div class="float-child-b">
+        <center>
+          <h2 class="text-center" style="color: limegreen"><b>Google GeoMaps</b></h2>
+          <hr>
+          <div id="ADD">
+            <div id="map" style="width:700px;height:350px"></div>
+          </div>
+          <script src="static/js/googleGeo.js"></script>
+          <p style="color: aliceblue;">"Search Popularity Index" (SPI) measures the frequency of our <br> specified search term in the top "trending Google searches". <br> <br>
+            For example, an SPI for 100 for the game "Apex" would mean 100% <br> of of the top trending Google searches contained "Apex". <br> <br>
+            NOTE: Values with 0 do not appear on the map.
+          </p>
+        </center>
+      </div>
+      
+      <!-- Steam -->
+      <div class="float-child-a">
+        <center>
           <h2 class="text-center" style="color: darkcyan"><b>Steam</b></h2>
           <hr>
             <div id="steam1"></div>
             <div id="steam2"></div>
             <div id="steam3"></div>
-          <!--Need to fix img tag-->
-          <img src="">
         </div>
+        </center>
       </div>
     </div>
-  </div>
 
-  <!-- Twitch -->
-  <div class="row">
-    <div class="col-md-12">
-      <div class="media">
-        <div class="media-body">
-          <h2 class="text-center" style="color: purple"><b>Twitch</b></h2>
+    <!-- Row 3 -->
+    <div class="float-container">
+      <div class="float-child-c">
+        <center>
+          <h2 class="text-center" style="color: rgb(240, 144, 217)"><b>Gaming Stock Data</b></h2>
           <hr>
-          <div id="twitch"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-    
-  <!-- Google Trends -->
-  <div class="row" style="margin-top: 80px;">
-    <div class="page-header">
-      <h2 class="text-center" style="color: gold"><b>Google Trends</b></h2>
-      <div class="col-md-6">
-        <div id="gline"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Google Geo -->
-  <div class="row" style="margin-top: 80px;">
-    <div class="page-header">
-      <h2 class="text-center" style="color: limegreen"><b>Google GeoMaps</b></h2>
-      <div class="col-md-6">
-        <div id="map" style="width:700px;height:350px"></div>
-        <script src="static/js/googleGeo.js"></script>
-        <p style="color: aliceblue;">"Search Popularity Index" (SPI) measures the frequency of our specified search term in the top "trending Google searches". <br>
-          For example, an SPI for 100 for the game "Apex" would mean 100% of of the top trending Google searches contained "Apex". <br>
-          NOTE: Values with 0 do not appear on the map.
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <!--Charlotte New Code From Here Down (added images/fixed formatting)-->
-  <!-- Gaming Stock Data -->
-  <div class="row" style="margin-top: 80px;">
-    <div class="page-header">
-      <h2 class="text-center" style="color: rgb(240, 144, 217)"><b>Gaming Stock Data</b></h2>
-      <div class="col-md-6">
-        <div class="thumbnail">
-          <!-- Plotly graph here -->
           <div id="yahoo"></div>
+        </center>
       </div>
     </div>
-    </div>
-    </div>
-  </div>
 
     <!-- Section: Footer -->
     <footer>
       <div style="color: white">Copyright &copy; Team React 2022</div>
     </footer>
-    <!-- all JS scripts -->
-    <script src="static/js/main.js"></script>
-    <script src="static/js/googleLine.js"></script>
-    <script src="static/js/steam.js"></script>
-    <script src="static/js/twitch.js"></script>
-    <script src="static/js/yahoo.js"></script>
-    <script src="static/js/helper.js"></script>
-  </body>
+  </div>
+
+  <!-- all JS scripts -->
+  <script src="static/js/main.js"></script>
+  <script src="static/js/googleLine.js"></script>
+  <script src="static/js/steam.js"></script>
+  <script src="static/js/twitch.js"></script>
+  <script src="static/js/yahoo.js"></script>
+  <script src="static/js/helper.js"></script>
+</body>
+
 </html>
 

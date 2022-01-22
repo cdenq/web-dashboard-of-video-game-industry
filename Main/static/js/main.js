@@ -43,8 +43,9 @@ async function main() {
   // Change up charts based on click
   document.querySelector("#selDataset").addEventListener("change", event => {
     restyleGoogleLine(googleLineData, event.target.value);
-    // restyleGoogleGeo(googleGeoData, event.target.value);
-    restyleTwitch(twitchData, event.target.value);
+    graphTwitch(twitchData, event.target.value);
+    // restyleTwitch(twitchData, event.target.value);
+    restyleGoogleGeo(googleGeoData, event.target.value);
   });
 };
 
