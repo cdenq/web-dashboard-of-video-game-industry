@@ -1,11 +1,37 @@
 //---------------------------------------------------------
 //GOOGLE MULTILINE INIT
 //---------------------------------------------------------
-function graphGoogleLine(data, title) {
-    let googleLineTitle = `${cap(title)}'s Search Relevancy Over Time`;
+function graphGoogleLine(data, gameTitle) {
+    let googleLineTitle = `${cap(gameTitle)}'s Search Relevancy Over Time`;
+
+    var gameTitleList = ["apex", "csgo", "dota", "gta", "rust"];
+    let realTitleList = ["Apex", "CSGO", "Dota 2", "GTA V", "Rust"];
+  
+    if (gameTitle == gameTitleList[0]) {
+      realTitle = realTitleList[0];
+    } else if (gameTitle == gameTitleList[1]) {
+      realTitle = realTitleList[1];
+    } else if (gameTitle = gameTitleList[2]) {
+      realTitle = realTitleList[2];
+    } else if (gameTitle = gameTitleList[3]) {
+      realTitle = realTitleList[3];
+    } else {
+      realTitle = realTitleList[4];
+    };
+
+    // TESTER PRINTS
+    // console.log(gameTitle);
+    // console.log(gameTitleList[0]);
+    // console.log(realTitle);
+    // console.log(data[0][realTitle]);
 
     let gMonths = data.map(item => item['Month']);
-    let gMonthsValues = data.map(item => item[title]);
+    let gMonthsValues = data.map(item => item[realTitle]);
+
+    // console.log();
+    console.log(data);
+    console.log(gMonths);
+    console.log(gMonthsValues);
 
     let trace1 = {
         x: gMonths,

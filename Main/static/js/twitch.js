@@ -29,11 +29,12 @@ function graphTwitch(data, gameTitle) {
     realTitle = realTitleList[4];
   };
   
+  //TESTER PRINTS
   //let objLength = Object.keys(data[0]).length;\
-  console.log(gameTitle);
-  console.log(gameTitleList[0]);
-  console.log(realTitle);
-  console.log(data[0][realTitle]);
+  // console.log(gameTitle);
+  // console.log(gameTitleList[0]);
+  // console.log(realTitle);
+  // console.log(data[0][realTitle]);
 
   var barData = {
     y: [data[0][realTitle], average],
