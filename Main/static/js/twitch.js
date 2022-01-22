@@ -15,7 +15,7 @@ function graphTwitch(data, gameTitle) {
   var gameTitleList = ["apex", "csgo", "dota", "gta", "rust"];
   let realTitleList = ["Apex Legends", "Counter-Strike: Global Offensive", "Dota 2", "Grand Theft Auto V", "Rust"];
   //might need to code out the calculation to show how you got average (?)
-  let average = 95600
+  let average = 101420
 
   if (gameTitle == gameTitleList[0]) {
     realTitle = realTitleList[0];
@@ -56,4 +56,26 @@ function graphTwitch(data, gameTitle) {
   };
 
   Plotly.newPlot("twitch", traceData, barLayout);
+};
+
+//---------------------------------------------------------
+//GOOGLE MULTILINE RESTYLE
+//---------------------------------------------------------
+function restyleTwitch(value) {
+  // Initialize an empty array for the country's data
+  let newData = [];
+
+  if (event.target.value == 'apex') {
+        newData = data.map(item => item['Apex Legends']);
+    } else if (event.target.value == 'csgo') {
+        newData = data.map(item => item['Counter-Strike: Global Offensive']);
+    } else if (event.target.value == 'dota') {
+        newData = data.map(item => item['Dota 2']);
+    } else if (event.target.value == 'gta') {
+        newData = data.map(item => item['Grand Theft Auto V']);
+    } else { //is rust
+        newData = data.map(item => item['Rust']);
+    };
+
+  Plotly.restyle("twitch", "y", [newData]);
 };
