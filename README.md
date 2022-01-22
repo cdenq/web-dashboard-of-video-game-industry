@@ -56,7 +56,15 @@ Along with the analysis, project also involved a written report and a Powerpoint
 - Acknowledging potential pitfalls with results and techniques
 
 ## Screenshots
+<<<<<<< Updated upstream
 ![image1](https://github.com/cdenq/web-dashboard-of-video-game-industry/blob/main/Screenshots/image1.png)
 ![Image2](https://user-images.githubusercontent.com/74934154/150647895-f8840f00-ae60-4bf6-b66a-5d72a0123520.png)
 ![Image 3](https://user-images.githubusercontent.com/74934154/150647896-f403e095-967f-4bd9-a479-e7d417924062.png)
 ![Image4](https://user-images.githubusercontent.com/74934154/150647897-493dba42-c09f-4085-aef7-c318f7117542.png)
+=======
+![Image 3](https://user-images.githubusercontent.com/74934154/150647896-f403e095-967f-4bd9-a479-e7d417924062.png)
+![Image1](https://user-images.githubusercontent.com/74934154/150647894-b19b1444-068a-404f-8b41-a4ce06c03242.png)
+![Image2](https://user-images.githubusercontent.com/74934154/150647895-f8840f00-ae60-4bf6-b66a-5d72a0123520.png)
+![Image4](https://user-images.githubusercontent.com/74934154/150647897-493dba42-c09f-4085-aef7-c318f7117542.png)
+![Image 5](https://user-images.githubusercontent.com/74934154/150648828-df0c065e-f394-455b-871d-acee91587e3e.png)
+>>>>>>> Stashed changes
