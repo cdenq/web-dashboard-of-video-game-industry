@@ -1,8 +1,7 @@
 //---------------------------------------------------------
 //YAHOO MULTILINE INIT
 //---------------------------------------------------------
-function graphYahoo() {
-};
+function graphYahoo(yahooData) {
 
 var trace1 = {
     x: ["2016", "2017", "2018", "2019", "2020", "2021", "2022"],
@@ -46,13 +45,11 @@ var trace1 = {
   };
   
   Plotly.newPlot('yahoo', traceData, layout);
+};
 
 //---------------------------------------------------------
 //YAHOO MULTILINE RESTYLE
 //---------------------------------------------------------
-function restyleYahoo() {
-};
-
 //alternative code?
 // import * as yf from 'yfinance';
 // import * as pd from 'pandas';

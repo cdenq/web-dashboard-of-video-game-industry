@@ -2,7 +2,7 @@
 //GOOGLE MULTILINE INIT
 //---------------------------------------------------------
 function graphGoogleLine(data, title) {
-    let googleLineTitle = `${title}'s Search Relevancy Over Time`;
+    let googleLineTitle = `${cap(title)}'s Search Relevancy Over Time`;
 
     let gMonths = data.map(item => item['Month']);
     let gMonthsValues = data.map(item => item[title]);

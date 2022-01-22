@@ -14,8 +14,9 @@ async function main() {
   let googleGeoData = data[3];
   let yahooData = data[4];
   
+  let defaultValue = 'apex'
   // Set the default game title in dropdown, APEX
-  document.querySelector("#selDataset").value = 'apex';
+  document.querySelector("#selDataset").value = defaultValue;
 
   // -------------------------------------
   // WIP
@@ -28,11 +29,11 @@ async function main() {
   // });
 
   // Set the default charts
-  graphGoogleLine(googleLineData, 'Apex');
-  graphGoogleGeo(googleGeoData, 'Apex');
-  graphSteam();
-  twitchbar(twitchData, 'Apex');
-  graphYahoo();
+  graphGoogleLine(googleLineData, defaultValue);
+  // graphGoogleGeo(googleGeoData, defaultValue);
+  graphSteam(steamData, defaultValue);
+  graphTwitch(twitchData, defaultValue);
+  graphYahoo(yahooData);
 
   // document.querySelector("#selDataset").addEventListener("change", event => {
   //   restyleGoogleLine(event.target.value);
