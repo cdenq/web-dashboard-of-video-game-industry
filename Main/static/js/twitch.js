@@ -1,6 +1,7 @@
 //---------------------------------------------------------
 //TWITCH VIEWS
 //---------------------------------------------------------
+
 function graphTwitch(data, gameTitle) {
   
   //formatting vars
@@ -34,8 +35,8 @@ function graphTwitch(data, gameTitle) {
   // console.log(gameTitle);
   // console.log(gameTitleList[0]);
   // console.log(realTitle);
-  console.log(data[0][realTitle]);
-  console.log(data[0][realTitleList]);
+  // console.log(data[0][realTitle]);
+  // console.log(data[0][realTitleList]);
 
   var barData = {
     y: [data[0][realTitle], average],
@@ -66,28 +67,29 @@ function graphTwitch(data, gameTitle) {
   Plotly.newPlot("twitch", traceData, barLayout);
 };
 
+
+
 //---------------------------------------------------------
 //GOOGLE MULTILINE RESTYLE VIA GAME TITLE
 //---------------------------------------------------------
-function restyleTwitch(value) {
-  // Initialize an empty array for the country's data
-  let newData = [];
+// function restyleTwitch(value) {
+//   // Initialize an empty array for the country's data
+//   let newData = [];
 
-  if (event.target.value == 'apex') {
-        newData = data.map(item => item['Apex Legends']);
-        
-    } else if (event.target.value == 'csgo') {
-        newData = data.map(item => item['Counter-Strike: Global Offensive']);
-    } else if (event.target.value == 'dota') {
-        newData = data.map(item => item['Dota 2']);
-    } else if (event.target.value == 'gta') {
-        newData = data.map(item => item['Grand Theft Auto V']);
-    } else { //is rust
-        newData = data.map(item => item['Rust']);
-    };
+//   if (event.target.value == 'apex') {
+//         newData = data.map(item => item['Apex Legends']);
+//     } else if (event.target.value == 'csgo') {
+//         newData = data.map(item => item['Counter-Strike: Global Offensive']);
+//     } else if (event.target.value == 'dota') {
+//         newData = data.map(item => item['Dota 2']);
+//     } else if (event.target.value == 'gta') {
+//         newData = data.map(item => item['Grand Theft Auto V']);
+//     } else { //is rust
+//         newData = data.map(item => item['Rust']);
+//     };
 
-  Plotly.restyle("twitch", "y", [newData]);
-};
+//   Plotly.restyle("twitch", "y", [newData]);
+// };
 
 
 //   // ---------------------------------------------------------
@@ -98,16 +100,47 @@ function restyleTwitch(value) {
 //   let newData = [];
 
 //   if (event.target.value == 'apex') {
-//         newData = data.map(item => item[7][1]);
+//         newData = data.map(item => item[7][0]);
 //     } else if (event.target.value == 'csgo') {
-//         newData = data.map(item => item[18][1]);
+//         newData = data.map(item => item[18][0]);
 //     } else if (event.target.value == 'dota') {
-//         newData = data.map(item => item[27][1]);
+//         newData = data.map(item => item[27][0]);
 //     } else if (event.target.value == 'gta') {
-//         newData = data.map(item => item[43][1]);
+//         newData = data.map(item => item[43][0]);
 //     } else { //is rust
-//         newData = data.map(item => item[74][1]);
+//         newData = data.map(item => item[74][0]);
 //     };
 
 //   Plotly.restyle("twitch", "y", [newData]);
 // };
+
+// console.log(newData)
+
+
+  // ---------------------------------------------------------
+//GOOGLE MULTILINE RESTYLE VIA LOOP
+//---------------------------------------------------------
+function restyleTwitch(value) {
+  // Initialize an empty array for the country's data
+  let keys = [];
+  let values = [];
+
+  for (const [key, value] of Object.entries(data[1])) {
+    console.log(`${key}: ${value}`);
+  }
+  // if (event.target.value == 'apex') {
+  //       newData = data.map(item => item[7][0]);
+  //   } else if (event.target.value == 'csgo') {
+  //       newData = data.map(item => item[18][0]);
+  //   } else if (event.target.value == 'dota') {
+  //       newData = data.map(item => item[27][0]);
+  //   } else if (event.target.value == 'gta') {
+  //       newData = data.map(item => item[43][0]);
+  //   } else { //is rust
+  //       newData = data.map(item => item[74][0]);
+  //   };
+
+  Plotly.restyle("twitch", "y", [newData]);
+};
+
+console.log()
