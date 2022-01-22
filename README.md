@@ -18,9 +18,10 @@ Along with the analysis, project also involved a written report and a Powerpoint
 1) User requires local installation of:
     - MongoDB (optionally with mongosh or mongoCompass)
     - Python (and related libraries)
-2) User runs `scrape_web.py` to scrape the relevant websites and clean its returned data.
-3) User runs `seed_data_insert` to populate local mongoDB database.
-4) User runs `app.py` to launch the Flask-generated webpage.
+2) User runs `scrape_web_and_seed_data.py` to scrape the relevant websites and clean its returned data.
+3) User runs `app.py` to launch the Flask-generated webpage.
+4) User can visit /data to get the raw .json data.
+5) Otherwise, user can visit /dashboard to view the graphs.
 
 ## Built with
 - Python
