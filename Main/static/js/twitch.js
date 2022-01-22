@@ -34,7 +34,8 @@ function graphTwitch(data, gameTitle) {
   // console.log(gameTitle);
   // console.log(gameTitleList[0]);
   // console.log(realTitle);
-  // console.log(data[0][realTitle]);
+  console.log(data[0][realTitle]);
+  console.log(data[0][realTitleList]);
 
   var barData = {
     y: [data[0][realTitle], average],
@@ -46,6 +47,13 @@ function graphTwitch(data, gameTitle) {
   var barLayout = {
     height: heightGraph,
     width: widthGraph,
+    title: "Weekly Views for Specific Game vs. Average Weekly Views of All Games",
+    xaxis: {
+      title: 'Games',
+      },
+      yaxis: {
+        title: 'Views',
+        },
     margin: {
       l: mL,
       r: mR,
@@ -67,6 +75,7 @@ function restyleTwitch(value) {
 
   if (event.target.value == 'apex') {
         newData = data.map(item => item['Apex Legends']);
+        
     } else if (event.target.value == 'csgo') {
         newData = data.map(item => item['Counter-Strike: Global Offensive']);
     } else if (event.target.value == 'dota') {
@@ -81,7 +90,7 @@ function restyleTwitch(value) {
 };
 
 
-  //---------------------------------------------------------
+//   // ---------------------------------------------------------
 // //GOOGLE MULTILINE RESTYLE VIA INDEX
 // //---------------------------------------------------------
 // function restyleTwitch(value) {
