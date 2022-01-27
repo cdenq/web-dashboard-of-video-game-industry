@@ -57,6 +57,7 @@ Along with the analysis, project also involved a written report and a Powerpoint
 - Acknowledging potential pitfalls with results and techniques
 
 ## Screenshots
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/74934154/151427757-7e09cdda-9ffc-45ae-b6df-9ab5da0e0703.gif)
 ![Image 3](https://user-images.githubusercontent.com/74934154/150647896-f403e095-967f-4bd9-a479-e7d417924062.png)
 ![image1](https://github.com/cdenq/web-dashboard-of-video-game-industry/blob/main/Screenshots/image1.png?raw=true)
 ![Image2](https://user-images.githubusercontent.com/74934154/150647895-f8840f00-ae60-4bf6-b66a-5d72a0123520.png)
